@@ -7,7 +7,6 @@
     background-image: url('../../../public/images/gallery.jpg');
     background-size: 100%;
     display: flex;
-    /* // background-color: orange; */
     background-repeat: no-repeat;
     background-position: center;
 
@@ -33,7 +32,7 @@
 
 .home-container h2 a {
     text-decoration: none;
-    color: #ce5408;
+    /* color: #ce5408; */
 }
 
 /* .link {

@@ -8,7 +8,7 @@ export const Header = () => {
             <div className='mini-navbar-wrap'>
                 <div className="logo-wrap">
                     <p className="logo">
-                        <Link>
+                        <Link to='/'>
                             <img src="/images/logo3.png" alt='camera-logo'/>
                         </Link>
                     </p>
