@@ -1,0 +1,136 @@
+header {
+    /* // background: rgb(115, 0, 182); */
+    background: linear-gradient(0deg, rgb(0, 0, 0) 0%, #000000 25%, rgb(0, 0, 0) 0%);
+    /* // margin: 0 0; */
+}
+
+header ul {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+header ul span {
+    color: white;
+    padding: 0.5em;
+}
+
+.mini-navbar ul {
+    border-radius: 0.3em;
+    padding-left: 0px;
+    width: 100%;
+}
+
+header li {
+    list-style: none;
+    margin: .35em;
+    padding: 0 .95em;
+}
+
+header a {
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 1.3px 1.3px #ffffff80;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+nav {
+    border-top: transparent;
+}
+
+.logo {
+    padding-left: 15%;
+    font-size: 1em;
+    color: white;
+    padding-bottom: 0;
+}
+
+.logo img{
+    size: 60px 60px;
+}
+.logo-wrap {
+    font-family: 'Comic-Sans', cursive;
+    /* // letter-spacing: .1em; */
+    margin: 0 0;
+}
+
+.mini-navbar-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    /* // height: 80%; */
+}
+
+/* // Button Css
+
+// .btn {		
+// 	position: relative;	
+// 	padding: 1.4rem 4.2rem;
+// 	padding-right: 3.1rem;
+// 	font-size: 1.4rem;
+// 	color: var(--inv);
+// 	letter-spacing: 1.1rem;
+// 	text-transform: uppercase;
+// 	transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);	
+// 	cursor: pointer;
+// 	user-select: none;
+// }
+
+// .btn:before, .btn:after {
+// 	content: '';
+// 	position: absolute;	
+// 	transition: inherit;
+// 	z-index: -1;
+// }
+
+// .btn:hover {
+// 	color: var(--def);
+// 	transition-delay: .5s;
+// }
+
+// .btn:hover:before {
+// 	transition-delay: 0s;
+// }
+
+// .btn:hover:after {
+// 	background: var(--inv);
+// 	transition-delay: .35s;
+// }
+
+// /* From Top */
+
+/* // .from-top:before, 
+// .from-top:after {
+// 	left: 0;
+// 	height: 0;
+// 	width: 100%;
+// }
+
+// .from-top:before {
+// 	bottom: 0;	
+// 	border: 1px solid var(--inv);
+// 	border-top: 0;
+// 	border-bottom: 0;
+// }
+
+// .from-top:after {
+// 	top: 0;
+// 	height: 0;
+// }
+
+// .from-top:hover:before,
+// .from-top:hover:after {
+// 	height: 100%;
+// }
+
+// .mini-navbar a:hover {
+//     background-color: rgba($color: #000000, $alpha: 0.5);
+//     border:solid 2px white;
+// } */ 
