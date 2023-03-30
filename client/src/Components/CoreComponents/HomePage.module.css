@@ -30,15 +30,10 @@
     font-style: oblique;
 }
 
-.home-container h2 a {
+.link {
     text-decoration: none;
-    /* color: #ce5408; */
+    color: #ce5408;
 }
-
-/* .link {
-    text-decoration: none;
-    color: rgba(#ce5408);
-} */
 
 .inner-container h1 {
     /* // margin-top: 245%; */
