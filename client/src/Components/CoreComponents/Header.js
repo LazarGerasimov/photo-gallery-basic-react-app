@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom';
 // import styles from './Header.module.css';
-import './Header.css';
+// import './Header.css';
+import styles from './Header.module.css'
 
 export const Header = () => {
     return (
         <header>
-            <div className='mini-navbar-wrap'>
-                <div className="logo-wrap">
-                    <p className="logo">
+            <div className={styles["mini-navbar-wrap"]}>
+                <div className={styles["logo-wrap"]}>
+                    <p className={styles["logo"]}>
                         <Link to='/'>
                             <img src="/images/logo3.png" alt='camera-logo'/>
                         </Link>
                     </p>
                 </div>
-                <div className="mini-navbar">
+                <div className={styles["mini-navbar"]}>
 
                     {/* if not logged in */}
                     <ul>
