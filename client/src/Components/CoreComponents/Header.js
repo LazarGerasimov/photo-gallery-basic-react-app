@@ -9,7 +9,7 @@ export const Header = () => {
                 <div className="logo-wrap">
                     <p className="logo">
                         <Link>
-                            <img src="/images/logo3.png" />
+                            <img src="/images/logo3.png" alt='camera-logo'/>
                         </Link>
                     </p>
                 </div>
