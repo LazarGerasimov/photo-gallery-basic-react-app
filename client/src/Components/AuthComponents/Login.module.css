@@ -50,7 +50,7 @@ form {
 
 .log-form h2 {
     width: 100%;
-    color: lighten(white, 20%);
+    color: white;
     font-family: 'open sans condensed';
     font-size: 1.35em;
     display: block;
@@ -93,7 +93,7 @@ form {
 }
 
 .btn:hover {
-    background-color: lighten(#891601, 5%);
+    background-color: #891601;
     color: white;
     cursor: pointer;
 }
@@ -108,7 +108,7 @@ form {
 }
 
 .existing {
-    color: lighten(#874201, 10%);
+    color: #874201;
     line-height: .10em;
     position: relative;
     top: 2.5em;
@@ -117,7 +117,6 @@ form {
     margin: 0;
     padding: 0;
     float: right;
-
 }
 
 .existing:hover {
