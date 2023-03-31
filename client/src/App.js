@@ -1,8 +1,9 @@
 import './App.css';
 
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { Header } from './Components/CoreComponents/Header';
-import { HomePage } from './Components/CoreComponents/HomePage';
+
+import { Header } from './Components/CoreComponents/Header/Header';
+import { HomePage } from './Components/CoreComponents/HomePage/HomePage';
 import { Login } from './Components/AuthComponents/Login/Login';
 import { Register } from './Components/AuthComponents/Register/Register';
 
