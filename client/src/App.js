@@ -3,7 +3,8 @@ import './App.css';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Header } from './Components/CoreComponents/Header';
 import { HomePage } from './Components/CoreComponents/HomePage';
-import { Login } from './Components/AuthComponents/Login';
+import { Login } from './Components/AuthComponents/Login/Login';
+import { Register } from './Components/AuthComponents/Register/Register';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
             <Route path='/' element={<HomePage />}/>
             <Route path='/auth/login' element={<Login />}/>
+            <Route path='/auth/register' element={<Register />}/>
         </Routes>
     </>
   );
