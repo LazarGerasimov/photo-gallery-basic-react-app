@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthContext';
-import * as userService from '../../../services/authService'
+import * as authService from '../../../services/authService'
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Register.module.css';
 
@@ -24,7 +24,7 @@ export const Register = () => {
         e.preventDefault();
 
         try {
-            const userData = await userService.register(formData);
+            const userData = await authService.register(formData);
             setUserData(userData);
             navigate('/');
         } catch (error) {
