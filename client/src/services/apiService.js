@@ -1,8 +1,5 @@
 
-
-
 const baseUrl = `http://localhost:3030`;
-
 
 
 export const uploadPhoto = async (data, token) => {
@@ -18,10 +15,9 @@ export const uploadPhoto = async (data, token) => {
         });
 
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
     } catch (error) {
-
+        console.log(error);
     }
 
-
-}
+};

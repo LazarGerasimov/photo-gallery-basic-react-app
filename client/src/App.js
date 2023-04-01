@@ -15,6 +15,7 @@ import './App.css';
 function App() {
 
     const [user, setUser] = useLocalStorage('auth', null);
+    
     const setUserData = (userData) => {
         setUser({ ...userData });
     }
