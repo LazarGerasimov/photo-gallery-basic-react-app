@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 const baseUrl = `http://localhost:3030`;
 
 
@@ -48,3 +50,9 @@ export const register = async (data) => {
     }
 
 }
+
+
+export const logout = () => {
+    fetch(`${baseUrl}/auth/logout`);
+}
+
