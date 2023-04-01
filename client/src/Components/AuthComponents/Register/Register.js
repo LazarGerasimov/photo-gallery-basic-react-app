@@ -1,20 +1,29 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Register.module.css';
 
 
 export const Register = () => {
+
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    
+
     return (
             <div className={styles["log-form"]}>
                 <h2>Register a new account</h2>
                 <form className={styles["register"]}>
 
-                    <input type="text" title="email" placeholder="email"/>
+                    <input type="text" title="email" placeholder="email" name="email" />
 
                     {/* <p className={styles["error"]}>
                         Email is required!
                     </p> */}
 
-                    <input type="password" placeholder="password" />
+                    <input type="password" placeholder="password" name="password" />
 
                     {/* <p className="error">
                     Password is required!
