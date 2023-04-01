@@ -1,5 +1,5 @@
 module.exports = () => (req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Credentials', true)
     res.setHeader('Content-Type','application/json')
     // res.setHeader('Set-Cookie:http-only')

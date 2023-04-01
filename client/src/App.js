@@ -1,6 +1,7 @@
 
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { AuthContext } from './contexts/AuthContext';
+import { useLocalStorage } from './Components/hooks/useLocalStorage';
 
 import { Header } from './Components/CoreComponents/Header/Header';
 import { HomePage } from './Components/CoreComponents/HomePage/HomePage';
@@ -11,10 +12,14 @@ import './App.css';
 
 function App() {
 
-    
+    const [user, setUser] = useLocalStorage('auth', {});
+    const setUserData = (userData) => {
+        setUser({ ...userData });
+    }
+
 
     return (
-        <AuthContext.Provider>
+        <AuthContext.Provider value={{user, setUserData}}>
             <Header />
             <Routes>
                 <Route path='/' element={<HomePage />} />
