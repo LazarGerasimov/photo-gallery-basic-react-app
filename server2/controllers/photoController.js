@@ -9,6 +9,7 @@ const photoController = require('express').Router();
 //create Photo
 photoController.post('/create', async (req, res) => {
     const data = req.body;
+    console.log(data);
     try {
         const userId = req?.user?._id;
         const photo = await addPhoto(data, userId)
