@@ -13,7 +13,7 @@ export const Register = () => {
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         console.log(formData);
-    }
+    };
 
 
     return (
@@ -37,6 +37,7 @@ export const Register = () => {
                     name="password"
                     type="password"
                     placeholder="password"
+                    onChange={onChangeHandler}
                 />
 
                 {/* <p className="error">
