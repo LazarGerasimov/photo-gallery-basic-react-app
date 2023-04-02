@@ -33,3 +33,15 @@ export const getAllPhotos = async () => {
         return [];
     }
 }
+
+export const getPhotoById = async (photoId) => {
+    try {
+        const response = await fetch(`${baseUrl}/${photoId}`);
+        const result = await response.json();
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.log(error.message)
+        return [];
+    }
+}
