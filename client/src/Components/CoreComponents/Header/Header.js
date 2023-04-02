@@ -11,7 +11,7 @@ export const Header = () => {
 
     const { user, onLogoutHandler } = useContext(AuthContext);
 
-    const onHomeClick = () => {
+    const onTestClick = () => {
         console.log(user);
     }
 
@@ -20,7 +20,7 @@ export const Header = () => {
             <div className={styles["mini-navbar-wrap"]}>
                 <div className={styles["logo-wrap"]}>
                     <p className={styles["logo"]}>
-                        <Link to='/' onClick={onHomeClick}>
+                        <Link to='/' onClick={onTestClick}>
                             <img src="/images/logo3.png" alt='camera-logo' />
                         </Link>
                     </p>
@@ -34,7 +34,7 @@ export const Header = () => {
 
                         <ul>
                             <li>
-                                <Link to="/" onClick={onHomeClick} >Home</Link>
+                                <Link to="/">Home</Link>
                             </li>
                             <li>
                                 <Link to="/photos/most-recent">Recent Photos</Link>

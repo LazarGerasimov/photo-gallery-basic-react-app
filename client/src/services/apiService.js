@@ -21,3 +21,4 @@ export const uploadPhoto = async (data, token) => {
     }
 
 };
+
