@@ -22,3 +22,14 @@ export const uploadPhoto = async (data, token) => {
 
 };
 
+export const getAllPhotos = async () => {
+    try {
+        const response = await fetch(`${baseUrl}/photos`)
+        const result = await response.json();
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.log(error.message)
+        return [];
+    }
+}
