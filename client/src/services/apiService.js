@@ -14,7 +14,8 @@ export const uploadPhoto = async (data, token) => {
             body: JSON.stringify(data)
         });
 
-        const result = await response.json();
+        // const result = await response.json();
+        // return result;
         // console.log(result);
     } catch (error) {
         console.log(error);
@@ -36,7 +37,7 @@ export const getAllPhotos = async () => {
 
 export const getPhotoById = async (photoId) => {
     try {
-        const response = await fetch(`${baseUrl}/${photoId}`);
+        const response = await fetch(`${baseUrl}/photos/${photoId}`);
         const result = await response.json();
         console.log(result);
         return result;

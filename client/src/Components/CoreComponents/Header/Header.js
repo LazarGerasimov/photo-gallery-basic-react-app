@@ -12,7 +12,7 @@ export const Header = () => {
     const { user, onLogoutHandler } = useContext(AuthContext);
 
     const onTestClick = () => {
-        console.log(user);
+        // console.log(user);
     }
 
     return (

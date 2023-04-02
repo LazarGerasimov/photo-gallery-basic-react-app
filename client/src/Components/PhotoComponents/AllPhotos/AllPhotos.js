@@ -30,7 +30,7 @@ export const AllPhotos = () => {
                         <figure>
                             <img src={photo.imageUrl} alt={photo.title} />
                         </figure>
-                        <h3><Link to={'/'}>{photo.title}</Link></h3>
+                        <h3><Link to={`/photos/${photo._id}`}>{photo.title}</Link></h3>
                         <h2>£{photo.price}</h2>
                         <p>{photo.description}</p>
                     </div>

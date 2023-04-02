@@ -11,6 +11,7 @@ import { Register } from './Components/AuthComponents/Register/Register';
 import { AddPhoto } from './Components/PhotoComponents/AddPhoto/AddPhoto';
 import './App.css';
 import { AllPhotos } from './Components/PhotoComponents/AllPhotos/AllPhotos';
+import { PhotoDetails } from './Components/PhotoComponents/PhotoDetails/PhotoDetails';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
                 <Route path='/auth/register' element={<Register />} />
                 <Route path='/photos' element={<AllPhotos />} />
                 <Route path='/photos/create' element={<AddPhoto />} />
+                <Route path='/photos/:photoId' element={<PhotoDetails />}/>
             </Routes>
         </AuthContext.Provider>
     );
