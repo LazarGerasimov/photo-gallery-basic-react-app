@@ -18,7 +18,7 @@
     text-align: center;
     font-weight: 500px;
     font-size: 55px;
-    animation: slideUp 1.5s ease-in-out forwards .8s;
+    animation: slideUp 2.7s;
 }
 
 .home-container h2 {
@@ -26,7 +26,7 @@
     padding-left: 15%;
     font-size: 40px;
     text-decoration: none;
-    animation: slideUp 2s ease-in-out forwards .8s;
+    animation: slideUp 2.7s;
     font-style: oblique;
 }
 
