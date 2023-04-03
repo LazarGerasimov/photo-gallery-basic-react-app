@@ -22,21 +22,23 @@ export const AllPhotos = () => {
 
     return (
         <>
-        <h1>All Photos</h1>
-        <div className={styles["our_photos"]}>
-            {photos.map((photo) => {
-                return (
-                    <div className={styles["photo_box"]} key={photo._id}>
-                        <figure>
-                            <img src={photo.imageUrl} alt={photo.title} />
-                        </figure>
-                        <h3><Link to={`/photos/${photo._id}`}>{photo.title}</Link></h3>
-                        <h2>£{photo.price}</h2>
-                        <p>{photo.description}</p>
-                    </div>
-                )
-            })}
-        </div>
+            <h1>All Photos</h1>
+            <div className={styles["all-photos-wrapper"]}>
+                <div className={styles["our_photos"]}>
+                    {photos.map((photo) => {
+                        return (
+                            <div className={styles["photo_box"]} key={photo._id}>
+                                <figure>
+                                    <img src={photo.imageUrl} alt={photo.title} />
+                                </figure>
+                                <h3><Link to={`/photos/${photo._id}`}>{photo.title}</Link></h3>
+                                <h2>£{photo.price}</h2>
+                                <p>{photo.description}</p>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
         </>
     )
 }
