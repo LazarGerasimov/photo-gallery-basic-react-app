@@ -34,6 +34,15 @@ h1 {
     margin: 0;
 }
 
+.our_photos figure {
+    cursor: pointer;
+    transition: transform .4s;
+}
+
+.our_photos figure:hover {
+    transform: scale(1.6);
+}
+
 .our_photos img {
     width: 300px;
     height: 193px;
@@ -56,7 +65,7 @@ h1 {
     text-decoration: none;
     border-radius: 20px;
     box-shadow: 5px -1px 20px 6px gray;
-
+    cursor: pointer;
 }
 
 .our_photos h2 {
@@ -82,7 +91,8 @@ h1 {
 }
 
 .our_photos .photo_box h3:hover {
-    background: rgb(154, 70, 1) 25%;
+    /* background: rgb(154, 70, 1) 25%; */
+    background-color: #00256C;
     transition: ease-in all 0.5s;
 }
 
