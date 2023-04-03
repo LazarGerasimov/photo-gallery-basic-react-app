@@ -23,7 +23,7 @@ export const AllPhotos = () => {
 
     return (
         <>
-            <h1>All Photos</h1>
+            <h1 className={styles["all-photos-h1"]}>All Photos</h1>
             <div className={styles["all-photos-wrapper"]}>
                 <div className={styles["our_photos"]}>
                     {photos.map((photo) => {

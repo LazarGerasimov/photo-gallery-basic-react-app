@@ -1,6 +1,7 @@
-h1 {
+.all-photos-h1 {
     text-align: center;
     margin-top: 60px;
+    animation: slideUp 1.5s;
 }
 
 .all-photos-wrapper {
@@ -8,6 +9,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: slideUp 1.5s;
 }
 
 .our_photos {
@@ -99,3 +101,13 @@ h1 {
 /* // col-md-4 .margin_bottom1 {
 //     margin-bottom: 10px;
 // } */
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(300px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
