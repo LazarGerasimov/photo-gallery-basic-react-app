@@ -99,16 +99,16 @@
 }
 
 .see-all-content-message {
-    font-size: 20px;
-    font-style: italic;
-    font-weight: bold;
+    font-size: 30px;
+    /* font-style: italic; */
+    /* font-weight: bold; */
     text-align: center;
 }
 
 .see-all-content-message a {
     text-decoration: none;
-    font-size: 24px;
-    color: #943603;
+    font-size: 32px;
+    color: #4493B5;
     transition: transform .4s;
 }
 
