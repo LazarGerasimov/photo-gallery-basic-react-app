@@ -1,3 +1,133 @@
+.recent-photos-h1 {
+    text-align: center;
+    margin-top: 60px;
+    animation: slideUp 1.5s;
+}
 
+.recent-photos-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slideUp 1.5s;
+}
+
+.our_photos {
+    text-align: center;
+    margin-top: 30px;
+    /* margin-left: 4.6%; */
+    background-color: #fff;
+    padding: 50px 50px;
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+    margin-right: 80px;
+    width: 80%;
+    flex-wrap: wrap;
+    gap: 50px;
+
+}
+
+.our_photos .photo_box {
+    text-align: center;
+}
+
+.our_photos .photo_box figure {
+    margin: 0;
+}
+
+.our_photos figure {
+    cursor: pointer;
+    transition: transform .4s;
+}
+
+.our_photos figure:hover {
+    transform: scale(1.6);
+}
+
+.our_photos img {
+    width: 300px;
+    height: 193px;
+    image-resolution: 100px 100px;
+    border: 3px solid black;
+    border-radius: 20px;
+    box-shadow: 5px -1px 20px 6px gray;
+}
+
+.our_photos .photo_box h3 {
+    width: 300px;
+    color: white;
+    font-size: 20px;
+    line-height: 20px;
+    background-color: #252525;
+    font-weight: 100px;
+    margin: 0 auto;
+    padding: 10px 0;
+    transition: ease-in all 0.5s;
+    text-decoration: none;
+    border-radius: 20px;
+    box-shadow: 5px -1px 20px 6px gray;
+    cursor: pointer;
+}
+
+.our_photos h2 {
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.our_photos .photo_box a {
+    text-decoration: none;
+    color: white;
+}
+
+.our_photos .photo_box p {
+    width: 400px;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    line-height: 20px;
+    /* // background-color: #252525; */
+    font-weight: 300;
+    margin: 0 0;
+    padding: 0 0;
+    transition: ease-in all 0.5s;
+}
+
+.our_photos .photo_box h3:hover {
+    /* background: rgb(154, 70, 1) 25%; */
+    background-color: #00256C;
+    transition: ease-in all 0.5s;
+}
+
+.see-all-content-message {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+}
+
+.see-all-content-message a {
+    text-decoration: none;
+    font-size: 24px;
+    color: #943603;
+    transition: transform .4s;
+}
+
+.see-all-content-message a:hover {
+    transform: scale(1.7);
+    text-decoration: underline;
+
+}
+
+
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(300px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
 
 
