@@ -33,7 +33,7 @@ export const getAllPhotos = async () => {
         console.log(error.message)
         return [];
     }
-}
+};
 
 export const getPhotoById = async (photoId) => {
     try {
@@ -43,6 +43,17 @@ export const getPhotoById = async (photoId) => {
         return result;
     } catch (error) {
         console.log(error.message)
+        return [];
+    }
+};
+
+export const getRecentPhotos = async () => {
+    try {
+        const response = await fetch(`${baseUrl}/photos/most-recent`);
+        const result = response.json();
+        return result;
+    } catch (error) {
+        console.log(error.message);
         return [];
     }
 }
