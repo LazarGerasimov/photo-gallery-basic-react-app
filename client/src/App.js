@@ -12,6 +12,7 @@ import { AddPhoto } from './Components/PhotoComponents/AddPhoto/AddPhoto';
 import './App.css';
 import { AllPhotos } from './Components/PhotoComponents/AllPhotos/AllPhotos';
 import { PhotoDetails } from './Components/PhotoComponents/PhotoDetails/PhotoDetails';
+import { RecentPhotos } from './Components/PhotoComponents/RecentPhotos/RecentPhotos';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
                 <Route path='/photos' element={<AllPhotos />} />
                 <Route path='/photos/create' element={<AddPhoto />} />
                 <Route path='/photos/:photoId' element={<PhotoDetails />}/>
+                <Route path='/photos/most-recent' element={<RecentPhotos />}/>
             </Routes>
         </AuthContext.Provider>
     );
