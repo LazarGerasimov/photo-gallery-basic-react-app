@@ -80,11 +80,12 @@
     text-decoration: none;
     animation: slideUp 2.7s;
     font-style: oblique;
+    color: #173F58;
 }
 
 .link {
     text-decoration: none;
-    color: #ce5408;
+    color: #4493B5;
 }
 
 .inner-container h1 {

@@ -21,7 +21,7 @@ export const RecentPhotos = () => {
 
     return (
         <>
-            <h1 className={styles["recent-photos-h1"]}>Our last photos</h1>
+            <h1 className={styles["recent-photos-h1"]}>Our latest photos</h1>
             <div className={styles["recent-photos-wrapper"]}>
                 <div className={styles["our_photos"]}>
                     {recentPhotos.map((photo) => {
