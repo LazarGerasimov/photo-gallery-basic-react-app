@@ -43,7 +43,7 @@ export const RecentPhotos = () => {
                     })}
                 </div>
             </div>
-            <p className={styles["see-all-content-message"]}>To see all available content in our gallery, please log in <Link to={'/auth/login'}>here</Link></p>
+            <p className={styles["see-all-content-message"]}>To see all available content in our gallery, please <Link to={'/auth/login'}>log in</Link></p>
         </>
     )
 }
