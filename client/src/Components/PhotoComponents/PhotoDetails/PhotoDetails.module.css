@@ -117,8 +117,18 @@
     background-color: #00256C;
 }
 
+.like-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 1px 1px 1px blue;
+}
+
 .heart-img {
     width: 70px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.heart-img:hover {
+    transform: rotateY(360deg);
 }
 
 .heart-span {
