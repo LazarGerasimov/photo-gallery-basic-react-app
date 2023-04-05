@@ -6,7 +6,7 @@ import styles from './PhotoDetails.module.css';
 
 export const PhotoDetails = () => {
 
-    const [photo, setPhoto] = useState();
+    const [photo, setPhoto] = useState([]);
     const { photoId } = useParams();
 
     useEffect(() => {
@@ -31,8 +31,10 @@ export const PhotoDetails = () => {
 
             {/* <button type="submit" className="btn">Like</button> */}
 
-            <button type="submit" className="btn"> Edit</button >
-            <button type="submit" className="btn"> Delete</button >
+            <div className={styles["photo-details-button-wrapper"]}>
+                <button type="submit" className="btn"> Edit</button >
+                <button type="submit" className="btn"> Delete</button >
+            </div>
 
         </div >
     )
