@@ -74,8 +74,8 @@ photoController.put('/:id', async (req, res) => {
 // delete photo
 photoController.delete('/:id', async (req, res) => {
     try {
-        const bike = await getPhotoById(req.params.id);
-        if (req.user._id != bike._ownerId._id) {
+        const photo = await getPhotoById(req.params.id);
+        if (req.user._id != photo._ownerId._id) {
             return res.status(403).json({ err: err.message })
         }
         await deletePhoto(req.params.id);

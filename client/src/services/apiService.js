@@ -3,7 +3,7 @@ const baseUrl = `http://localhost:3030`;
 
 
 export const uploadPhoto = async (data, token) => {
-  
+
     try {
         const response = await fetch(`${baseUrl}/photos/create`, {
             method: 'POST',
@@ -27,7 +27,7 @@ export const getAllPhotos = async () => {
     try {
         const response = await fetch(`${baseUrl}/photos`)
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
         return result;
     } catch (error) {
         console.log(error.message)
@@ -39,7 +39,7 @@ export const getPhotoById = async (photoId) => {
     try {
         const response = await fetch(`${baseUrl}/photos/${photoId}`);
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
         return result;
     } catch (error) {
         console.log(error.message)
@@ -55,5 +55,21 @@ export const getRecentPhotos = async () => {
     } catch (error) {
         console.log(error.message);
         return [];
+    }
+};
+
+export const deletePhotoById = async (photoId, token) => {
+    try {
+        const response = await fetch(`${baseUrl}/photos/${photoId}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'X-Authorization': token
+            }
+        });
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        return error;
     }
 }

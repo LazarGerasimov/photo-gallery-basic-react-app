@@ -38,7 +38,7 @@ export const AddPhoto = () => {
     return (
         <div className={styles["log-form"]}>
             <h2>Upload your photo</h2>
-            <form className={styles["register"]} onSubmit={onSubmitHandler} onClick={() => console.log(user.accessToken)}>
+            <form className={styles["register"]} onSubmit={onSubmitHandler}>
 
                 <input name="title" type="text" title="title" placeholder="title" onChange={onChangeHandler} />
 
