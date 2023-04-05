@@ -32,8 +32,8 @@ export const PhotoDetails = () => {
             {/* <button type="submit" className="btn">Like</button> */}
 
             <div className={styles["photo-details-button-wrapper"]}>
-                <button type="submit" className="btn"> Edit</button >
-                <button type="submit" className="btn"> Delete</button >
+                <button type="submit" className={styles["edit-btn"]}> Edit</button >
+                <button type="submit" className={styles["delete-btn"]}> Delete</button >
             </div>
 
         </div >
