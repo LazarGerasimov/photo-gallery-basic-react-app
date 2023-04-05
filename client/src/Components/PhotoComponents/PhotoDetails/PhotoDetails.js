@@ -38,7 +38,7 @@ export const PhotoDetails = () => {
         <div className={styles["photo-details"]}>
             <div className={styles["photo-details-wrapper"]}>
                 <figure>
-                    <img src={photo.imageUrl} alt="img" />
+                    <img className={styles["details-main-image"]} src={photo.imageUrl} alt="img" />
                 </figure>
                 <h3>{photo?.title}</h3>
                 <h2>£{photo?.price}</h2>
@@ -47,10 +47,21 @@ export const PhotoDetails = () => {
 
             {/* <button type="submit" className="btn">Like</button> */}
 
-            <div className={styles["photo-details-button-wrapper"]}>
-                <button type="submit" className={styles["edit-btn"]}> Edit</button >
-                <button type="submit" className={styles["delete-btn"]} onClick={onPhotoDeleteHandler} > Delete</button >
-            </div>
+            {user ?
+                <div className={styles["photo-details-button-wrapper"]}>
+                    <button type="submit" className={styles["edit-btn"]}> Edit</button >
+                    <button type="submit" className={styles["delete-btn"]} onClick={onPhotoDeleteHandler} > Delete</button >
+                </div>
+
+                :
+
+                <div className={styles["photo-details-button-wrapper"]}>
+                    <button type="submit" className={styles["like-btn"]}><i className="fa-solid fa-thumbs-up"></i> Like </button >
+                    <span className={styles["heart-span"]}><img className={styles["heart-img"]} src={'/images/red-heart.png'} alt="" />3</span>
+                </div>
+
+            }
+
 
         </div >
     )

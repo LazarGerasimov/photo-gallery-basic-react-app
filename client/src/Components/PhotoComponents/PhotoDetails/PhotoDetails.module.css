@@ -1,3 +1,5 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
 .photo-details-h1 {
     text-align: center;
     margin-top: 60px;
@@ -28,7 +30,7 @@
     margin: 0;
 }
 
-.photo-details img {
+.details-main-image {
     width: 500px;
     height: 300px;
     image-resolution: 100px 100px;
@@ -109,8 +111,21 @@
 
 .delete-btn:hover {
     transform: scale(1.1);
-
 }
+
+.like-btn {
+    background-color: #00256C;
+}
+
+.heart-img {
+    width: 70px;
+}
+
+.heart-span {
+    font-size: 25px;
+    font-weight: bold;
+}
+
 
 @keyframes slideUp {
     0% {
