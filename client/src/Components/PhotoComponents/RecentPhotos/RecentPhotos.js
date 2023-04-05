@@ -15,7 +15,7 @@ export const RecentPhotos = () => {
         apiService.getRecentPhotos()
             .then(data => {
                 setRecentPhotos(data);
-                console.log(data);
+                // console.log(data);
             })
     }, []);
 
