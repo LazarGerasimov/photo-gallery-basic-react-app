@@ -83,9 +83,7 @@ export const likePhoto = async (photoId, token) => {
             }
         });
         const result = await response.json();
-        if (response.ok) {
-            return result
-        }
+        return result;
     } catch (error) {
         console.log(error.message);
         return error;

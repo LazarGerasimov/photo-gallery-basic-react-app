@@ -42,7 +42,7 @@ export const PhotoDetails = () => {
 
     const onLikeClickHandler = () => {
         try {
-            apiService.likePhoto(photoId, user.accessToken);
+            apiService.likePhoto(photo._id, user.accessToken);
         } catch (error) {
             console.log(error.message);
         }

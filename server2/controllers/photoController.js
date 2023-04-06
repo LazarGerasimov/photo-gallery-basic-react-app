@@ -75,26 +75,24 @@ photoController.put('/:id', async (req, res) => {
 photoController.delete('/:id', async (req, res) => {
     try {
         const photo = await getPhotoById(req.params.id);
-        if (req.user._id != photo._ownerId._id) {
+        // TODO check photo._ownerdId
+        if (req.user._id != photo._ownerId) {
             return res.status(403).json({ err: err.message })
         }
         await deletePhoto(req.params.id);
-        res.status(204).end()
+        res.status(200).send({message: 'Item was deleted successfully'});
     } catch (err) {
         res.status(400).json({ err: err.message })
     }
 });
 
 // like photo
-
 photoController.get('/:id/like', async (req, res) => {
     try {
         const photo = await getPhotoById(req.params.id);
-        if (photo._ownerId !== req.user?._id) {
-            console.log(`ownerId does not match userId`);
-        }
+        return res.status(200).json(photo);
     } catch (error) {
-        
+        console.log(error.message);
     }
 })
 

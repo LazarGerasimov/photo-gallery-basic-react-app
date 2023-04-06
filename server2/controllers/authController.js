@@ -39,8 +39,8 @@ authController.get('/logout', (req, res) => {
 
 authController.get('/profile', async (req, res) => {
     const _id = req?.user?._id;
-    const cars = await getPhotosByOwner(_id)
-    res.status(200).json(cars)
+    const photos = await getPhotosByOwner(_id)
+    res.status(200).json(photos)
     res.end()
 });
 module.exports = authController;

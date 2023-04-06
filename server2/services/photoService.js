@@ -1,5 +1,5 @@
 const Photo = require("../models/Photo")
-const User = require("../models/User")
+const User = require("../models/User");
 
 require('dotenv').config()
 
@@ -26,12 +26,26 @@ async function updatePhoto(id, photo) {
     // console.log(existing.title)
     existing.description = photo.description;
     existing.price = photo.price;
-    
+
     return existing.save();
 }
 
-const deletePhoto = async (id) => {
-    await Photo.findByIdAndDelete(id)
+// const updateUserPhotos = async (_id, photoId) => {
+//     try {
+//         const user = await User.findById(_id);
+//         let photoArray = user.photos
+//         photoArray.push(photoId)
+//         await User.findByIdAndUpdate(_id, {photos: photoArray})
+//     } catch (error) {
+//         throw new Error(error)
+//     }
+// }
+
+const deletePhoto = async (photoId) => {
+    await Photo.findByIdAndDelete(photoId);
+    const photoCollection = User.collection("photos");
+    console.log(photoCollection);
+    
 }
 const getMostExpensivePhotos = async () => {
     const photos = await Photo.find({}).sort({ price: -1 }).limit(3);
@@ -58,6 +72,8 @@ const unlikePhoto = async (photoId, userId) => {
     photo.likes.filter(p => p !== userId);
     return photo.save();
 }
+
+
 
 
 module.exports = {
