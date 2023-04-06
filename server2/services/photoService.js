@@ -47,6 +47,18 @@ const getPhotosByOwner = async (_id) => {
     return await Photo.find({ _ownerId: _id })
 }
 
+const likePhoto = async (photoId, userId) => {
+    const photo = await Photo.findById(photoId);
+    photo.likes.push(userId);
+    return photo.save();
+}
+
+const unlikePhoto = async (photoId, userId) => {
+    const photo = await Photo.findById(photoId);
+    photo.likes.filter(p => p !== userId);
+    return photo.save();
+}
+
 
 module.exports = {
     addPhoto,
@@ -57,5 +69,7 @@ module.exports = {
     getMostExpensivePhotos,
     getRecentPhotos,
     getAllPhotos,
-    getPhotosByOwner
+    getPhotosByOwner,
+    likePhoto,
+    unlikePhoto
 }

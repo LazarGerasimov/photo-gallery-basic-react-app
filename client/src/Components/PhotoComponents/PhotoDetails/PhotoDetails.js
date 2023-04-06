@@ -36,7 +36,9 @@ export const PhotoDetails = () => {
         console.log(photo);
     }
 
-
+    const onLikeClickHandler = () => {
+        
+    }
 
 
     return (

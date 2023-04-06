@@ -72,4 +72,8 @@ export const deletePhotoById = async (photoId, token) => {
     } catch (error) {
         return error;
     }
+};
+
+export const likePhoto = async (photoId, token) => {
+    
 }
