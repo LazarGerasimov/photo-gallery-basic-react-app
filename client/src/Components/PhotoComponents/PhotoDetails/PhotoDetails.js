@@ -37,6 +37,8 @@ export const PhotoDetails = () => {
     }
 
 
+
+
     return (
         <div className={styles["photo-details"]}>
             <div className={styles["photo-details-wrapper"]}>
@@ -70,7 +72,7 @@ export const PhotoDetails = () => {
                     }
                 </>
                 : <div className={styles["photo-details-button-wrapper"]}>
-                    <span className={styles["heart-span"]}><img className={styles["heart-img"]} src={'/images/red-heart.png'} alt="" />3</span>
+                    <span className={styles["heart-span"]}><img className={styles["heart-img"]} src={'/images/red-heart.png'} alt="" />{photo.likes.length}</span>
                 </div>
             }
 
