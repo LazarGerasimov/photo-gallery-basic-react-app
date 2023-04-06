@@ -75,5 +75,19 @@ export const deletePhotoById = async (photoId, token) => {
 };
 
 export const likePhoto = async (photoId, token) => {
-    
+    try {
+        const response = await fetch(`${baseUrl}/photos/${photoId}/like`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': token
+            }
+        });
+        const result = await response.json();
+        if (response.ok) {
+            return result
+        }
+    } catch (error) {
+        console.log(error.message);
+        return error;
+    }
 }

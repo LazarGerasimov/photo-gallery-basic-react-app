@@ -8,6 +8,8 @@ import { AuthContext } from "../../../contexts/AuthContext";
 export const PhotoDetails = () => {
 
     const [photo, setPhoto] = useState([]);
+    const [likes, setLikes] = useState([]);
+
     const { photoId } = useParams();
 
     const { user } = useContext(AuthContext);
@@ -18,6 +20,7 @@ export const PhotoDetails = () => {
         apiService.getPhotoById(photoId)
             .then(data => {
                 setPhoto(data);
+                setLikes(data.likes);
             })
     }, []);
 
@@ -34,10 +37,15 @@ export const PhotoDetails = () => {
 
     const testClick = () => {
         console.log(photo);
+        console.log(photo.likes.length);
     }
 
     const onLikeClickHandler = () => {
-        
+        try {
+            apiService.likePhoto(photoId, user.accessToken);
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
 
@@ -67,14 +75,14 @@ export const PhotoDetails = () => {
                         :
 
                         <div className={styles["photo-details-button-wrapper"]}>
-                            <button type="submit" className={styles["like-btn"]}><i className="fa-solid fa-thumbs-up"></i> Like </button >
-                            <span className={styles["heart-span"]}><img className={styles["heart-img"]} src={'/images/red-heart.png'} alt="" />3</span>
+                            <button type="submit" className={styles["like-btn"]} onClick={onLikeClickHandler}><i className="fa-solid fa-thumbs-up"></i> Like </button >
+                            <span className={styles["heart-span"]}><img className={styles["heart-img"]} src={'/images/red-heart.png'} alt="" />{likes.length}</span>
                         </div>
 
                     }
                 </>
                 : <div className={styles["photo-details-button-wrapper"]}>
-                    <span className={styles["heart-span"]}><img className={styles["heart-img"]} src={'/images/red-heart.png'} alt="" />{photo.likes.length}</span>
+                    <span className={styles["heart-span"]}><img className={styles["heart-img"]} src={'/images/red-heart.png'} alt="" />{likes.length}</span>
                 </div>
             }
 

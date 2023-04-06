@@ -1,6 +1,6 @@
 const User = require('../models/User');
 
-const { addPhoto, getAllPhotos, getMostExpensivePhotos, getRecentPhotos , getPhotoById, updatePhoto, deletePhoto} = require('../services/photoService');
+const { addPhoto, getAllPhotos, getMostExpensivePhotos, getRecentPhotos , getPhotoById, updatePhoto, deletePhoto, likePhoto, unlikePhoto} = require('../services/photoService');
 const { updateUserPhotos } = require('../services/userService');
 
 const photoController = require('express').Router();
@@ -85,6 +85,18 @@ photoController.delete('/:id', async (req, res) => {
     }
 });
 
+// like photo
+
+photoController.get('/:id/like', async (req, res) => {
+    try {
+        const photo = await getPhotoById(req.params.id);
+        if (photo._ownerId !== req.user?._id) {
+            console.log(`ownerId does not match userId`);
+        }
+    } catch (error) {
+        
+    }
+})
 
 
 
