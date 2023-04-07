@@ -94,7 +94,7 @@ export const editPhoto = async (photo, token) => {
 
 export const getPhotosByOwner = async (token) => {
     try {
-        const response = await fetch(`${baseUrl}/auth/profile`, {
+        const response = await fetch(`${baseUrl}/photos/profile`, {
             headers: {
                 'X-Authorization': token
             }
