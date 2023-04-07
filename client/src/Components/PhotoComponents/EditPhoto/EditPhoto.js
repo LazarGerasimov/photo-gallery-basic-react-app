@@ -7,24 +7,32 @@ import { useNavigate, useParams } from 'react-router-dom';
 export const EditPhoto = () => {
 
     const { photoId } = useParams();
+    const { user } = useContext(AuthContext);
 
     const [photo, setPhoto] = useState([]);
-
-    useEffect(() => {
-        apiService.getPhotoById(photoId)
-            .then(data => {
-                setPhoto(data);
-                console.log(data);
-            })
-    }, []);
-
-    const { user } = useContext(AuthContext);
 
     const [title, setTitle] = useState(photo.title);
     const [description, setDescription] = useState(photo.description);
     const [price, setPrice] = useState(photo.price);
     const [imageUrl, setImageUrl] = useState(photo.imageUrl);
 
+    useEffect(() => {
+        apiService.getPhotoById(photoId)
+            .then(data => {
+                setPhoto(data);
+                console.log(data);
+                console.log(photoId)
+            })
+    }, []);
+
+    useEffect(() => {
+        setTitle(photo.title);
+        setDescription(photo.description);
+        setPrice(photo.price);
+        setImageUrl(photo.imageUrl);
+    }, [photo])
+
+    
 
     const [formData, setFormData] = useState({
         title,
@@ -45,20 +53,18 @@ export const EditPhoto = () => {
 
     }
 
-
-
     return (
         <div className={styles["log-form"]}>
             <h2>Edit your photo</h2>
             <form className={styles["register"]} onSubmit={onSubmitHandler}>
 
-                <input name="title" type="text" title="title" placeholder="title" onChange={onChangeHandler} value={title} />
+                <input name="title" type="text" title="title" placeholder="title" value={title} required onChange={onChangeHandler} />
 
                 {/* <p className={styles["error"]} >
                     Title is required!
                 </p> */}
 
-                <input name="description" type="text" placeholder="description" onChange={onChangeHandler} value={description} />
+                <input name="description" type="text" placeholder="description" value={description} required onChange={onChangeHandler} />
 
                 {/* <p className={styles["error"]} >
                     Description is required!
@@ -68,13 +74,13 @@ export const EditPhoto = () => {
                     Description must be at least 10 symbols!
                 </p > */}
 
-                <input name="price" type="text" placeholder="price" onChange={onChangeHandler} value={price} />
+                <input name="price" type="text" placeholder="price" value={price} required onChange={onChangeHandler} />
 
                 {/* <p className={styles["error"]} >
                     Price must be at least 5 GBP!
                 </p > */}
 
-                <input name="imageUrl" type="text" title="img" placeholder="imageUrl" onChange={onChangeHandler} value={imageUrl} />
+                <input name="imageUrl" type="text" title="img" placeholder="imageUrl" value={imageUrl} required onChange={onChangeHandler} />
 
                 {/* <p className={styles["error"]} >
                     Image URL is required!
