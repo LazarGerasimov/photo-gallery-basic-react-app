@@ -8,6 +8,7 @@ export const EditPhoto = () => {
 
     const { photoId } = useParams();
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         title: "",
@@ -15,6 +16,14 @@ export const EditPhoto = () => {
         price: "",
         imageUrl: "",
         _ownerId: user._id
+    });
+
+    const [errors, setErrors] = useState({
+        title: false,
+        description: false,
+        price: false,
+        imageUrl: false,
+        serverErrors: false
     });
 
     useEffect(() => {
@@ -26,19 +35,59 @@ export const EditPhoto = () => {
             })
     }, []);
 
-   
+
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        console.log(formData);
+        // console.log(formData);
     }
 
-    const navigate = useNavigate();
+    const onBlurHandler = (e) => {
+        if (e.target.name === 'title') {
+            if (e.target.value.length < 5) {
+                setErrors(errors => ({ ...errors, [e.target.name]: true }));
+            } else {
+                setErrors(errors => ({ ...errors, [e.target.name]: false }));
+
+            }
+        }
+        if (e.target.name === 'description') {
+            if (e.target.value.length < 10) {
+                setErrors(errors => ({ ...errors, [e.target.name]: true }));
+            } else {
+                setErrors(errors => ({ ...errors, [e.target.name]: false }));
+            }
+        }
+        if (e.target.name === 'price') {
+            if (Number(e.target.value) < 10) {
+                setErrors(errors => ({ ...errors, [e.target.name]: true }));
+            } else if (typeof e.target.value !== Number) {
+                setErrors(errors => ({ ...errors, [e.target.name]: true }));
+            } else {
+                setErrors(errors => ({ ...errors, [e.target.name]: false }));
+            }
+        }
+        if (e.target.name === 'imageUrl') {
+            if (e.target.value.length < 1) {
+                setErrors(errors => ({ ...errors, [e.target.name]: true }));
+            } else {
+                setErrors(errors => ({ ...errors, [e.target.name]: false }));
+            }
+        }
+    };
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
 
         try {
-            await apiService.editPhoto(formData, user.accessToken);
+            const editData = await apiService.editPhoto(formData, user.accessToken);
+            if (Object.values(formData).some(v => v === '' || Object.values(errors).some(v => v === true))) {
+                setErrors({ ...errors, serverErrors: 'All fields must be filled!' });
+                return;
+            }
+            if (editData?.message) {
+                setErrors({ ...errors, serverErrors: editData.message });
+                return;
+            }
             navigate(`/photos/${photoId}`)
         } catch (error) {
             console.log(error);
@@ -47,41 +96,78 @@ export const EditPhoto = () => {
     }
 
     return (
-        <div className={styles["log-form"]}>
-            <h2>Edit your photo</h2>
-            <form className={styles["register"]} onSubmit={onSubmitHandler}>
+        <>
+            <div className={styles["log-form"]}>
+                <h2>Edit your photo</h2>
 
-                <input name="title" type="text" title="title" placeholder="title" defaultValue={formData.title} onChange={onChangeHandler} />
+                <form className={styles["register"]} onSubmit={onSubmitHandler}>
 
-                {/* <p className={styles["error"]} >
-                    Title is required!
-                </p> */}
+                    <input
+                        name="title"
+                        type="text"
+                        title="title"
+                        placeholder="title"
+                        defaultValue={formData.title}
+                        onChange={onChangeHandler}
+                        onBlur={onBlurHandler}
+                    />
 
-                <input name="description" type="text" placeholder="description" defaultValue={formData.description} onChange={onChangeHandler} />
+                    <input
+                        name="description"
+                        type="text"
+                        placeholder="description"
+                        defaultValue={formData.description}
+                        onChange={onChangeHandler}
+                        onBlur={onBlurHandler}
+                    />
 
-                {/* <p className={styles["error"]} >
-                    Description is required!
-                </p > */}
+                    <input
+                        name="price"
+                        type="text"
+                        placeholder="price"
+                        defaultValue={formData.price}
+                        onChange={onChangeHandler}
+                        onBlur={onBlurHandler}
+                    />
 
-                {/* <p className={styles["error"]} >
-                    Description must be at least 10 symbols!
-                </p > */}
+                    <input
+                        name="imageUrl"
+                        type="text"
+                        title="img"
+                        placeholder="imageUrl"
+                        defaultValue={formData.imageUrl}
+                        onChange={onChangeHandler}
+                    />
 
-                <input name="price" type="text" placeholder="price" defaultValue={formData.price} onChange={onChangeHandler} />
+                    <button type="submit" className={styles["btn"]}>Edit</button>
 
-                {/* <p className={styles["error"]} >
-                    Price must be at least 5 GBP!
-                </p > */}
+                </form >
+            </div >
 
-                <input name="imageUrl" type="text" title="img" placeholder="imageUrl" defaultValue={formData.imageUrl} onChange={onChangeHandler} />
-
-                {/* <p className={styles["error"]} >
-                    Image URL is required!
-                </p > */}
-
-                <button type="submit" className={styles["btn"]}>Upload</button>
-
-            </form >
-        </div >
+            {(errors.title || errors.description || errors.price || errors.imageUrl || errors.serverErrors) &&
+                <div className={styles["add-photo-errors"]}>
+                    {errors.title &&
+                        <p className="error" >
+                            Title must be at least 5 characters long!
+                        </p>}
+                    {errors.description &&
+                        <p className="error" >
+                            Description must be at least 10 characters long!
+                        </p>}
+                    {(errors.price) &&
+                        <p className="error" >
+                            Price must be a number and more than £10!
+                        </p>}
+                    {errors.imageUrl &&
+                        <p className="error" >
+                            ImageUrl is required!
+                        </p>}
+                    {errors.serverErrors &&
+                        <p className="error" >
+                            {errors.serverErrors}
+                        </p>}
+                </div>
+            }
+        </>
     )
 }

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export const AddPhoto = () => {
 
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         title: '',
@@ -23,8 +24,6 @@ export const AddPhoto = () => {
         imageUrl: false,
         serverErrors: false
     });
-
-    const navigate = useNavigate();
 
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -69,7 +68,7 @@ export const AddPhoto = () => {
 
         try {
             const photoData = await apiService.uploadPhoto(formData, user.accessToken);
-            if (Object.values(formData).some(v => v === '' || Object.values(formData).some(v => v === true))) {
+            if (Object.values(formData).some(v => v === '' || Object.values(errors).some(v => v === true))) {
                 return setErrors({ ...errors, serverErrors: 'All fields must be filled!' });
             }
             if (photoData?.message.error) {
@@ -84,7 +83,6 @@ export const AddPhoto = () => {
 
     return (
         <>
-
             <div className={styles["log-form"]}>
                 <h2>Upload your photo</h2>
                 <form className={styles["register"]} onSubmit={onSubmitHandler}>
