@@ -44,7 +44,7 @@ function App() {
 
                 <Route path='/photos' element={<AllPhotos />} />
                 <Route path='/photos/create' element={<AddPhoto />} />
-                <Route path='/photos/:id/edit' element={<EditPhoto />} />
+                <Route path='/photos/:photoId/edit' element={<EditPhoto />} />
                 <Route path='/photos/:photoId' element={<PhotoDetails />}/>
                 <Route path='/photos/most-recent' element={<RecentPhotos />}/>
 

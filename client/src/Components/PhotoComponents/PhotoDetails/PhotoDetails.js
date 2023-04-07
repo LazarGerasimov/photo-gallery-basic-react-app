@@ -72,7 +72,7 @@ export const PhotoDetails = () => {
                         ?
 
                         <div className={styles["photo-details-button-wrapper"]}>
-                            <button type="submit" className={styles["edit-btn"]} onClick={onEditClick}> Edit</button >
+                            <button type="submit" className={styles["edit-btn"]} onClick={onEditClick} photo={photo} > Edit</button >
                             <button type="submit" className={styles["delete-btn"]} onClick={onPhotoDeleteHandler} > Delete</button >
                         </div>
 
