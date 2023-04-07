@@ -34,8 +34,16 @@ export const EditPhoto = () => {
 
     const navigate = useNavigate();
 
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
+
+        try {
+            await apiService.editPhoto(formData, user.accessToken);
+            navigate(`/photos/${photoId}`)
+        } catch (error) {
+            console.log(error);
+            return error;
+        }
     }
 
     return (

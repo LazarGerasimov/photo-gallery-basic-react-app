@@ -74,6 +74,24 @@ export const deletePhotoById = async (photoId, token) => {
     }
 };
 
+export const editPhoto = async (photo, token) => {
+    try {
+        const response = await fetch(`${baseUrl}/photos/${photo._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': token
+            },
+            body: JSON.stringify(photo)
+        });
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.log(error.message)
+        return error;
+    }
+}
+
 export const getPhotosByOwner = async (token) => {
     try {
         const response = await fetch(`${baseUrl}/auth/profile`, {
