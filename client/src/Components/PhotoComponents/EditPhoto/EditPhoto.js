@@ -39,7 +39,7 @@ export const EditPhoto = () => {
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         // console.log(formData);
-        setErrors(errors => ({ ...errors, [e.target.name]: false, ["serverError"]: false }))
+        setErrors(errors => ({ ...errors, [e.target.name]: false, ["serverErrors"]: false }))
     }
 
     const onBlurHandler = (e) => {
@@ -82,7 +82,7 @@ export const EditPhoto = () => {
                 setErrors({ ...errors, ["serverErrors"]: editData.message });
                 return;
             }
-            
+
             navigate(`/photos/${photoId}`)
         } catch (error) {
             console.log(error);

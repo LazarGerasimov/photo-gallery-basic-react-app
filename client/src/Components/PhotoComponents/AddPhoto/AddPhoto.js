@@ -27,7 +27,7 @@ export const AddPhoto = () => {
 
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        setErrors(errors => ({ ...errors, [e.target.name]: false, ["serverError"]: false }))
+        setErrors(errors => ({ ...errors, [e.target.name]: false, ["serverErrors"]: false }))
     }
 
     const onBlurHandler = (e) => {

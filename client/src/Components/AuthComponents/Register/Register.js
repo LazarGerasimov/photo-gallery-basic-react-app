@@ -20,7 +20,7 @@ export const Register = () => {
 
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        console.log(formData);
+        setErrors({...errors, [e.target.name]: false, ["serverErrors"]: false});
     };
 
     const onBlurHandler = (e) => {

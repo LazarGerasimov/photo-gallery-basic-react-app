@@ -20,6 +20,7 @@ export const Login = () => {
 
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        setErrors({...errors, [e.target.name]: false, ["serverErrors"]: false})
         // console.log(formData);
     };
 
