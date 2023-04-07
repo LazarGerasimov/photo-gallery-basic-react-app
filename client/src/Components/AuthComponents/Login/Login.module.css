@@ -125,4 +125,17 @@ form {
     color: #bba009;
 }
 
+.errors {
+    position: absolute;
+    right: 38%;
+    top: 80%;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: #AD0000;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
 
