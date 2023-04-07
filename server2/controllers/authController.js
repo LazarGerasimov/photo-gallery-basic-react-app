@@ -38,7 +38,7 @@ authController.get('/logout', (req, res) => {
 // get photos by owner
 // authController.get('/profile', async (req, res) => {
 
-//     const _id = req?.user?._id;
+//     const _id = req?.user?._id._id;
 //     try {
 //         const photos = await getPhotosByOwner(_id);
 //         res.status(200).json(photos);
@@ -47,6 +47,13 @@ authController.get('/logout', (req, res) => {
 //         console.log(_id);
 //         return (error.message);
 //     }
+// });
+
+// authController.get('/profile', async (req, res) => {
+//     const _id = req?.user?._id;
+//     const photos = await getPhotosByOwner(_id)
+//     res.status(200).json(photos)
+//     res.end()
 // });
 
 module.exports = authController;

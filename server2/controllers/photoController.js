@@ -113,21 +113,32 @@ photoController.get('/:id/like', async (req, res) => {
     }
 });
 
+// photoController.get('/profile', async (req, res) => {
+//     const _id = req?.user?._id;
+//     try {
+//         const photos = await getPhotosByOwner(_id);
+//         // const photos = await getAllPhotos();
+//         res.status(200).json(photos);
+//         res.end();
+//     } catch (error) {
+//         console.log(_id);
+//         return (error.message);
+//     }
+// });
+
 photoController.get('/profile', async (req, res) => {
     
-    const _id = req?.user?._id;
+    const _id = req.body._id;
+    
     try {
-        const photos = await getPhotosByOwner(_id);
+        // const photos = await getPhotosByOwner(_id);
+        const photos = await getAllPhotos();
         res.status(200).json(photos);
-        res.end();
     } catch (error) {
-        console.log(_id);
+        // console.log(_id);
         return (error.message);
     }
 });
-
-
-
 
 
 module.exports = photoController;

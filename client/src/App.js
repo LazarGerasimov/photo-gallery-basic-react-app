@@ -18,6 +18,7 @@ import { UserGuard } from './guards/User_Guard';
 import { GuestGuard } from './guards/GuestGuard';
 
 import './App.css';
+import { MostExpensive } from './Components/PhotoComponents/MostExpensive/MostExpensive';
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
                     <Route path='/photos/create' element={<AddPhoto />} />
                     <Route path='/photos/:photoId/edit' element={<EditPhoto />} />
                     <Route path='/photos/:photoId' element={<PhotoDetails />} />
+                    <Route path='/photos/most-expensive' element={<MostExpensive />}/>
                 </Route>
 
 
