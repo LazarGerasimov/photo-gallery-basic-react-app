@@ -12,10 +12,30 @@ export const Login = () => {
         password: ''
     });
 
+    const [errors, setErrors] = useState({
+        email: false,
+        password: false,
+        serverErrors: false
+    });
+
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         // console.log(formData);
     };
+
+    const onBlurHandler = (e) => {
+        if (e.target.name === 'email') {
+            const emailRegexValidator = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/;
+            if (!e.target.value.match(emailRegexValidator)) {
+                setErrors(errors => ({ ...errors, [e.target.name]: true }));
+            }
+        }
+        if (e.target.name === 'password') {
+            if (e.target.value.length < 6 || e.target.value.length > 12) {
+                setErrors(errors => ({ ...errors, [e.target.name]: true }));
+            }
+        }
+    }
 
     const { setUserData } = useContext(AuthContext);
     const navigate = useNavigate();
