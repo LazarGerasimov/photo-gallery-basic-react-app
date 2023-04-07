@@ -19,6 +19,7 @@ export const uploadPhoto = async (data, token) => {
         // console.log(result);
     } catch (error) {
         console.log(error);
+        return error;
     }
 
 };
