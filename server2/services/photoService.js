@@ -1,5 +1,7 @@
 const Photo = require("../models/Photo")
 const User = require("../models/User");
+const mongoose = require('mongoose');
+// const ObjectId = require('mongoose');
 
 require('dotenv').config()
 
@@ -41,6 +43,28 @@ async function updatePhoto(id, photo) {
 //     }
 // }
 
+const updateUserPhotos = async (_id, photoId) => {
+    try {
+        const user = await User.findById(_id);
+        let photoArray = user.currentPhotos;
+        photoArray.push(photoId);
+        await User.findByIdAndUpdate(_id, {currentPhotos: photoArray})
+    } catch (error) {
+        throw new Error(error);
+    }
+};
+
+const removeFromCurrentPhotos = async (_id, photoId) => {
+    try {
+        const user = await User.findById(_id);
+        let photoArray = user.currentPhotos;
+        let newArr = photoArray.filter(x => x._id !== photoId);
+        await User.findByIdAndUpdate(_id, {currentPhotos: newArr});
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
 const deletePhoto = async (photoId) => {
     await Photo.findByIdAndDelete(photoId);
 }
@@ -56,8 +80,23 @@ const getRecentPhotos = async () => {
 }
 
 const getPhotosByOwner = async (_id) => {
-    return await Photo.find({ _ownerId: _id })
+    // const ownedPhotos = await Photo.find({});
+    // return ownedPhotos;
+    const allPhotos = await Photo.find({}).sort({ created_at: -1 });
+    let ownedPhotosArray = allPhotos.filter(p => p._ownerId === _id);
+    return ownedPhotosArray;
 }
+
+// const updateUserPhotos = async (_id, photoId) => {
+//     try {
+//         const user = await User.findById(_id);
+//         let photoArray = user.photos
+//         photoArray.push(photoId)
+//         await User.findByIdAndUpdate(_id, {photos: photoArray})
+//     } catch (error) {
+//         throw new Error(error)
+//     }
+// }
 
 const likePhoto = async (photoId, userId) => {
     const photo = await Photo.findById(photoId);
@@ -84,6 +123,8 @@ module.exports = {
     getRecentPhotos,
     getAllPhotos,
     getPhotosByOwner,
+    updateUserPhotos,
+    removeFromCurrentPhotos,
     likePhoto,
     unlikePhoto
 }

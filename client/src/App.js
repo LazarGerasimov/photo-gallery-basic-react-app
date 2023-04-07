@@ -39,14 +39,14 @@ function App() {
 
                 <Route path='/auth/login' element={<Login />} />
                 <Route path='/auth/register' element={<Register />} />
-                <Route path='/auth/profile' element={<Profile />}/>
+                <Route path='/photos/profile' element={<Profile />}/>
 
                 <Route path='/photos' element={<AllPhotos />} />
                 <Route path='/photos/create' element={<AddPhoto />} />
                 <Route path='/photos/:photoId' element={<PhotoDetails />}/>
                 <Route path='/photos/most-recent' element={<RecentPhotos />}/>
 
-                
+
             </Routes>
         </AuthContext.Provider>
     );

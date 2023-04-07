@@ -18,6 +18,7 @@ export const AllPhotos = () => {
         apiService.getAllPhotos()
             .then(data => {
                 setPhotos(data);
+                console.log(data);
             })
     }, []); // will be executed once upon component mounting
 

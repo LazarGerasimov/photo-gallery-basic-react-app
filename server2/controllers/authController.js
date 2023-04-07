@@ -8,11 +8,11 @@ const authController = require('express').Router();
 authController.post('/register', async (req, res) => {
     const { email, password } = req.body;
     try {
-        const user = await register( email, password);
+        const user = await register(email, password);
         res.status(201).json(user)
     } catch (error) {
         console.log(error)
-        res.status(400).json({error:error.message})
+        res.status(400).json({ error: error.message })
     }
     res.end()
 });
@@ -24,7 +24,7 @@ authController.post('/login', async (req, res) => {
         const user = await login(email, password)
         res.status(201).json(user)
     } catch (error) {
-        res.status(400).json({error:error.message})
+        res.status(400).json({ error: error.message })
     }
     res.end()
 });
@@ -36,11 +36,17 @@ authController.get('/logout', (req, res) => {
 });
 
 // get photos by owner
+// authController.get('/profile', async (req, res) => {
 
-authController.get('/profile', async (req, res) => {
-    const _id = req?.user?._id;
-    const photos = await getPhotosByOwner(_id)
-    res.status(200).json(photos)
-    res.end()
-});
+//     const _id = req?.user?._id;
+//     try {
+//         const photos = await getPhotosByOwner(_id);
+//         res.status(200).json(photos);
+//         res.end();
+//     } catch (error) {
+//         console.log(_id);
+//         return (error.message);
+//     }
+// });
+
 module.exports = authController;

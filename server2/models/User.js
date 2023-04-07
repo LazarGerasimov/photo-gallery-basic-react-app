@@ -50,8 +50,9 @@ const userSchema = new Schema({
             type: mongoose.Types.ObjectId,
             ref: 'Photo',
         }
-    ]
-
+    ],
+    currentPhotos: []
+        
 });
 
 userSchema.pre('save', function (next) {

@@ -1,15 +1,28 @@
 const User = require('../models/User');
 
-const { addPhoto, getAllPhotos, getMostExpensivePhotos, getRecentPhotos , getPhotoById, updatePhoto, deletePhoto, likePhoto, unlikePhoto} = require('../services/photoService');
-const { updateUserPhotos } = require('../services/userService');
+const { addPhoto, getAllPhotos, getMostExpensivePhotos, getRecentPhotos , getPhotoById, updatePhoto, deletePhoto, likePhoto, unlikePhoto, updateUserPhotos, removeFromCurrentPhotos, getPhotosByOwner} = require('../services/photoService');
+
 
 const photoController = require('express').Router();
 
 
 //create Photo
+// photoController.post('/create', async (req, res) => {
+//     const data = req.body;
+//     console.log(data);
+//     try {
+//         const userId = req?.user?._id;
+//         const photo = await addPhoto(data, userId)
+//         await updateUserPhotos(userId, photo._id)
+//         res.status(201).json(photo)
+//     } catch (error) {
+//         console.log(error)
+//         res.status(400).json({error:error.message})
+//     }
+// })
+
 photoController.post('/create', async (req, res) => {
     const data = req.body;
-    console.log(data);
     try {
         const userId = req?.user?._id;
         const photo = await addPhoto(data, userId)
@@ -79,6 +92,7 @@ photoController.delete('/:id', async (req, res) => {
         if (req.user._id != photo._ownerId._id) {
             return res.status(403).json({ err: err.message })
         }
+        await removeFromCurrentPhotos(req.user._id, req.params.id);
         await deletePhoto(req.params.id);
         res.status(200).send({message: 'Item was deleted successfully'});
     } catch (err) {
@@ -94,7 +108,20 @@ photoController.get('/:id/like', async (req, res) => {
     } catch (error) {
         console.log(error.message);
     }
-})
+});
+
+photoController.get('/profile', async (req, res) => {
+    
+    const _id = req?.user?._id;
+    try {
+        const photos = await getPhotosByOwner(_id);
+        res.status(200).json(photos);
+        res.end();
+    } catch (error) {
+        console.log(_id);
+        return (error.message);
+    }
+});
 
 
 

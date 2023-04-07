@@ -74,14 +74,19 @@ export const deletePhotoById = async (photoId, token) => {
     }
 };
 
-export const getPhotosByOwner = async () => {
+export const getPhotosByOwner = async (token) => {
     try {
-        const response = await fetch(`${baseUrl}/auth/profile`);
+        const response = await fetch(`${baseUrl}/auth/profile`, {
+            headers: {
+                'X-Authorization': token
+            }
+        });
         const result = await response.json();
+        console.log(result);
         return result;
     } catch (error) {
         console.log(error.message);
-        return error;
+        return [];
     }
 }
 
