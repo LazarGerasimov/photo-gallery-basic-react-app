@@ -123,4 +123,15 @@ export const likePhoto = async (photoId, token) => {
         console.log(error.message);
         return error;
     }
+};
+
+export const getMostExpensive = async () => {
+    try {
+        const response = await fetch(`${baseUrl}/photos/most-expensive`);
+        const result = response.json();
+        return result;
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
 }
