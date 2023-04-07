@@ -100,12 +100,10 @@ export const getPhotosByOwner = async (token) => {
                 'X-Authorization': token
             }
         });
-        const result = await response.json();
-        console.log(result);
-        return result;
+        const result = response.json();
+        return result
     } catch (error) {
-        console.log(error.message);
-        return [];
+        return error.message;
     }
 }
 

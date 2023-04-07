@@ -4,6 +4,9 @@ import * as userService from './services/authService';
 
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
+import { UserGuard } from './guards/User_Guard';
+import { GuestGuard } from './guards/GuestGuard';
+
 import { Header } from './Components/CoreComponents/Header/Header';
 import { HomePage } from './Components/CoreComponents/HomePage/HomePage';
 import { Login } from './Components/AuthComponents/Login/Login';
@@ -14,11 +17,9 @@ import { PhotoDetails } from './Components/PhotoComponents/PhotoDetails/PhotoDet
 import { RecentPhotos } from './Components/PhotoComponents/RecentPhotos/RecentPhotos';
 import { Profile } from './Components/AuthComponents/Profile/Profile';
 import { EditPhoto } from './Components/PhotoComponents/EditPhoto/EditPhoto';
-import { UserGuard } from './guards/User_Guard';
-import { GuestGuard } from './guards/GuestGuard';
+import { MostExpensive } from './Components/PhotoComponents/MostExpensive/MostExpensive';
 
 import './App.css';
-import { MostExpensive } from './Components/PhotoComponents/MostExpensive/MostExpensive';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
         <AuthContext.Provider value={{ user, setUserData, onLogoutHandler }}>
             <Header />
             <Routes>
+                
                 <Route path='/' element={<HomePage />} />
 
                 <Route element={<UserGuard />}>
@@ -55,10 +57,6 @@ function App() {
                     <Route path='/photos/:photoId' element={<PhotoDetails />} />
                     <Route path='/photos/most-expensive' element={<MostExpensive />}/>
                 </Route>
-
-
-                
-
 
             </Routes>
         </AuthContext.Provider>
