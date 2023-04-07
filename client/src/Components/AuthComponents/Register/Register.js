@@ -12,9 +12,34 @@ export const Register = () => {
         password: ''
     });
 
+    const [errors, setErrors] = useState({
+        email: false,
+        password: false,
+        serverErrors: false
+    });
+
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         console.log(formData);
+    };
+
+    const onBlurHandler = (e) => {
+        if (e.target.name === 'email') {
+            const emailRegexValidator = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/;
+            if (!e.target.value.match(emailRegexValidator)) {
+                setErrors(errors => ({ ...errors, [e.target.name]: true }));
+            } else {
+                setErrors(errors => ({ ...errors, [e.target.name]: false }));
+
+            }
+        }
+        if (e.target.name === 'password') {
+            if (e.target.value.length < 6 || e.target.value.length > 12) {
+                setErrors(errors => ({ ...errors, [e.target.name]: true }));
+            } else {
+                setErrors(errors => ({ ...errors, [e.target.name]: false }));
+            }
+        }
     };
 
     const { setUserData } = useContext(AuthContext);
@@ -25,52 +50,64 @@ export const Register = () => {
 
         try {
             const userData = await authService.register(formData);
+            if (userData?.message) {
+                console.log(userData.message);
+                return setErrors({ ...errors, serverErrors: userData.message });
+            }
             setUserData(userData);
             navigate('/');
         } catch (error) {
             console.log(error)
         }
-       
+
     }
 
-    
     return (
-        <div className={styles["log-form"]}>
-            <h2>Register a new account</h2>
-            <form className={styles["register"]} onSubmit={onSubmitHandler}>
+        <>
+            <div className={styles["log-form"]}>
+                <h2>Register a new account</h2>
+                <form className={styles["register"]} onSubmit={onSubmitHandler}>
 
-                <input
-                    name="email"
-                    type="text"
-                    title="email"
-                    placeholder="email"
-                    onChange={onChangeHandler}
-                />
+                    <input
+                        name="email"
+                        type="text"
+                        title="email"
+                        placeholder="email"
+                        onChange={onChangeHandler}
+                        onBlur={onBlurHandler}
+                    />
 
-                {/* <p className={styles["error"]}>
-                        Email is required!
-                    </p> */}
+                    <input
+                        name="password"
+                        type="password"
+                        placeholder="password"
+                        onChange={onChangeHandler}
+                        onBlur={onBlurHandler}
+                    />
 
-                <input
-                    name="password"
-                    type="password"
-                    placeholder="password"
-                    onChange={onChangeHandler}
-                />
+                    <button type="submit" className={styles["btn"]}>Register</button>
 
-                {/* <p className="error">
-                    Password is required!
-                    </p> */}
+                    <Link className={styles["existing"]} to="/auth/login">Already a member? Login Here!</Link>
 
-                {/* <p className="error">
-                    Password must be at least 5 symbols!
-                    </p> */}
-
-                <button type="submit" className={styles["btn"]}>Register</button>
-
-                <Link className={styles["existing"]} to="/auth/login">Already a member? Login Here!</Link>
-
-            </form>
-        </div >
+                </form>
+            </div >
+            
+            {(errors.email || errors.password || errors.serverErrors) &&
+                <div className={styles["errors"]}>
+                    {errors.email &&
+                        <p className="error" >
+                            Valid email required!
+                        </p>}
+                    {errors.password &&
+                        <p className="error" >
+                            Password must be between 6 and 12 characters!
+                        </p>}
+                    {errors.serverErrors &&
+                        <p className="error" >
+                            {errors.serverErrors}
+                        </p>}
+                </div>
+            }
+        </>
     )
 }

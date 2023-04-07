@@ -40,9 +40,7 @@ export const Login = () => {
                 setErrors(errors => ({ ...errors, [e.target.name]: false }));
             }
         }
-
-
-    }
+    };
 
     const { setUserData } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -63,8 +61,6 @@ export const Login = () => {
         }
     }
 
-
-
     return (
         <>
             <div className={styles["log-form"]}>
@@ -79,7 +75,6 @@ export const Login = () => {
                         onChange={onChangeHandler}
                         onBlur={onBlurHandler}
                     />
-
 
                     <input
                         name='password'
@@ -112,4 +107,4 @@ export const Login = () => {
         </>
     )
 
-}
+};
