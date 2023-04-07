@@ -43,10 +43,8 @@ async function updatePhoto(id, photo) {
 
 const deletePhoto = async (photoId) => {
     await Photo.findByIdAndDelete(photoId);
-    const photoCollection = User.collection("photos");
-    console.log(photoCollection);
-    
 }
+
 const getMostExpensivePhotos = async () => {
     const photos = await Photo.find({}).sort({ price: -1 }).limit(3);
     return photos

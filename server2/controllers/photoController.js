@@ -76,7 +76,7 @@ photoController.delete('/:id', async (req, res) => {
     try {
         const photo = await getPhotoById(req.params.id);
         // TODO check photo._ownerdId
-        if (req.user._id != photo._ownerId) {
+        if (req.user._id != photo._ownerId._id) {
             return res.status(403).json({ err: err.message })
         }
         await deletePhoto(req.params.id);
