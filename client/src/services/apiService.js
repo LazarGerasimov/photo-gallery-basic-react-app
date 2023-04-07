@@ -74,6 +74,17 @@ export const deletePhotoById = async (photoId, token) => {
     }
 };
 
+export const getPhotosByOwner = async () => {
+    try {
+        const response = await fetch(`${baseUrl}/auth/profile`);
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.log(error.message);
+        return error;
+    }
+}
+
 export const likePhoto = async (photoId, token) => {
     try {
         const response = await fetch(`${baseUrl}/photos/${photoId}/like`, {
