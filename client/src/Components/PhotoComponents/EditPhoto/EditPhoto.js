@@ -39,22 +39,18 @@ export const EditPhoto = () => {
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         // console.log(formData);
+        setErrors(errors => ({ ...errors, [e.target.name]: false, ["serverError"]: false }))
     }
 
     const onBlurHandler = (e) => {
         if (e.target.name === 'title') {
             if (e.target.value.length < 5) {
                 setErrors(errors => ({ ...errors, [e.target.name]: true }));
-            } else {
-                setErrors(errors => ({ ...errors, [e.target.name]: false }));
-
             }
         }
         if (e.target.name === 'description') {
             if (e.target.value.length < 10) {
                 setErrors(errors => ({ ...errors, [e.target.name]: true }));
-            } else {
-                setErrors(errors => ({ ...errors, [e.target.name]: false }));
             }
         }
         if (e.target.name === 'price') {
@@ -62,15 +58,11 @@ export const EditPhoto = () => {
                 setErrors(errors => ({ ...errors, [e.target.name]: true }));
             } else if (typeof e.target.value !== Number) {
                 setErrors(errors => ({ ...errors, [e.target.name]: true }));
-            } else {
-                setErrors(errors => ({ ...errors, [e.target.name]: false }));
             }
         }
         if (e.target.name === 'imageUrl') {
             if (e.target.value.length < 1) {
                 setErrors(errors => ({ ...errors, [e.target.name]: true }));
-            } else {
-                setErrors(errors => ({ ...errors, [e.target.name]: false }));
             }
         }
     };
@@ -79,15 +71,18 @@ export const EditPhoto = () => {
         e.preventDefault();
 
         try {
+            if (Object.values(formData).some(v => v === '') || Object.values(formData).some(v => v === true)) {
+                setErrors({ ...errors, ["serverErrors"]: 'All fields must be filled!' });
+                return;    
+            }
+
             const editData = await apiService.editPhoto(formData, user.accessToken);
-            if (Object.values(formData).some(v => v === '' || Object.values(errors).some(v => v === true))) {
-                setErrors({ ...errors, serverErrors: 'All fields must be filled!' });
+
+            if (!editData) {
+                setErrors({ ...errors, ["serverErrors"]: editData.message });
                 return;
             }
-            if (editData?.message) {
-                setErrors({ ...errors, serverErrors: editData.message });
-                return;
-            }
+            
             navigate(`/photos/${photoId}`)
         } catch (error) {
             console.log(error);
@@ -137,6 +132,7 @@ export const EditPhoto = () => {
                         placeholder="imageUrl"
                         defaultValue={formData.imageUrl}
                         onChange={onChangeHandler}
+                        onBlur={onBlurHandler}
                     />
 
                     <button type="submit" className={styles["btn"]}>Edit</button>

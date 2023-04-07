@@ -27,22 +27,19 @@ export const AddPhoto = () => {
 
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        setErrors(errors => ({ ...errors, [e.target.name]: false, ["serverError"]: false }))
     }
 
     const onBlurHandler = (e) => {
         if (e.target.name === 'title') {
             if (e.target.value.length < 5) {
                 setErrors(errors => ({ ...errors, [e.target.name]: true }));
-            } else {
-                setErrors(errors => ({ ...errors, [e.target.name]: false }));
-
             }
         }
+
         if (e.target.name === 'description') {
             if (e.target.value.length < 10) {
                 setErrors(errors => ({ ...errors, [e.target.name]: true }));
-            } else {
-                setErrors(errors => ({ ...errors, [e.target.name]: false }));
             }
         }
         if (e.target.name === 'price') {
@@ -50,15 +47,11 @@ export const AddPhoto = () => {
                 setErrors(errors => ({ ...errors, [e.target.name]: true }));
             } else if (typeof e.target.value !== Number) {
                 setErrors(errors => ({ ...errors, [e.target.name]: true }));
-            } else {
-                setErrors(errors => ({ ...errors, [e.target.name]: false }));
             }
         }
         if (e.target.name === 'imageUrl') {
             if (e.target.value.length < 1) {
                 setErrors(errors => ({ ...errors, [e.target.name]: true }));
-            } else {
-                setErrors(errors => ({ ...errors, [e.target.name]: false }));
             }
         }
     };
@@ -67,14 +60,19 @@ export const AddPhoto = () => {
         e.preventDefault();
 
         try {
+            if (Object.values(formData).some(v => v === '') || Object.values(formData).some(v => v === true)) {
+                return setErrors({ ...errors, ["serverErrors"]: 'All fields must be filled!' });
+            }
+
             const photoData = await apiService.uploadPhoto(formData, user.accessToken);
-            if (Object.values(formData).some(v => v === '' || Object.values(errors).some(v => v === true))) {
-                return setErrors({ ...errors, serverErrors: 'All fields must be filled!' });
-            }
+
             if (photoData?.message.error) {
-                return setErrors({ ...errors, serverErrors: photoData.message.error });
+                return setErrors({ ...errors, ["serverErrors"]: photoData.message.error });
             }
-            navigate('/');
+
+            navigate('/photos');
+           
+
         } catch (error) {
             console.log(error.message);
             return error.error.message;

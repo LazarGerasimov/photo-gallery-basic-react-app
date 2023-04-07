@@ -28,6 +28,7 @@ photoController.post('/create', async (req, res) => {
         const photo = await addPhoto(data, userId)
         await updateUserPhotos(userId, photo._id)
         res.status(201).json(photo)
+        return photo;
     } catch (error) {
         console.log(error)
         res.status(400).json({error:error.message})
