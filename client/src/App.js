@@ -14,6 +14,7 @@ import { AllPhotos } from './Components/PhotoComponents/AllPhotos/AllPhotos';
 import { PhotoDetails } from './Components/PhotoComponents/PhotoDetails/PhotoDetails';
 import { RecentPhotos } from './Components/PhotoComponents/RecentPhotos/RecentPhotos';
 import { Profile } from './Components/AuthComponents/Profile/Profile';
+import { EditPhoto } from './Components/PhotoComponents/EditPhoto/EditPhoto';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
 
                 <Route path='/photos' element={<AllPhotos />} />
                 <Route path='/photos/create' element={<AddPhoto />} />
+                <Route path='/photos/:id/edit' element={<EditPhoto />} />
                 <Route path='/photos/:photoId' element={<PhotoDetails />}/>
                 <Route path='/photos/most-recent' element={<RecentPhotos />}/>
 

@@ -48,6 +48,10 @@ export const PhotoDetails = () => {
         }
     }
 
+    const onEditClick = () => {
+        navigate(`/photos/${photoId}/edit`);
+    }
+
 
     return (
         <div className={styles["photo-details"]}>
@@ -68,7 +72,7 @@ export const PhotoDetails = () => {
                         ?
 
                         <div className={styles["photo-details-button-wrapper"]}>
-                            <button type="submit" className={styles["edit-btn"]}> Edit</button >
+                            <button type="submit" className={styles["edit-btn"]} onClick={onEditClick}> Edit</button >
                             <button type="submit" className={styles["delete-btn"]} onClick={onPhotoDeleteHandler} > Delete</button >
                         </div>
 
