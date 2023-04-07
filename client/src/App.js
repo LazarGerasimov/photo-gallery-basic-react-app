@@ -13,6 +13,7 @@ import './App.css';
 import { AllPhotos } from './Components/PhotoComponents/AllPhotos/AllPhotos';
 import { PhotoDetails } from './Components/PhotoComponents/PhotoDetails/PhotoDetails';
 import { RecentPhotos } from './Components/PhotoComponents/RecentPhotos/RecentPhotos';
+import { Profile } from './Components/AuthComponents/Profile/Profile';
 
 
 function App() {
@@ -35,12 +36,17 @@ function App() {
             <Header />
             <Routes>
                 <Route path='/' element={<HomePage />} />
+
                 <Route path='/auth/login' element={<Login />} />
                 <Route path='/auth/register' element={<Register />} />
+                <Route path='/auth/profile' element={<Profile />}/>
+
                 <Route path='/photos' element={<AllPhotos />} />
                 <Route path='/photos/create' element={<AddPhoto />} />
                 <Route path='/photos/:photoId' element={<PhotoDetails />}/>
                 <Route path='/photos/most-recent' element={<RecentPhotos />}/>
+
+                
             </Routes>
         </AuthContext.Provider>
     );
