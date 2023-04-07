@@ -9,48 +9,33 @@ export const EditPhoto = () => {
     const { photoId } = useParams();
     const { user } = useContext(AuthContext);
 
-    const [photo, setPhoto] = useState([]);
-
-    const [title, setTitle] = useState(photo.title);
-    const [description, setDescription] = useState(photo.description);
-    const [price, setPrice] = useState(photo.price);
-    const [imageUrl, setImageUrl] = useState(photo.imageUrl);
+    const [formData, setFormData] = useState({
+        title: "",
+        description: "",
+        price: "",
+        imageUrl: "",
+        _ownerId: user._id
+    });
 
     useEffect(() => {
         apiService.getPhotoById(photoId)
             .then(data => {
-                setPhoto(data);
+                setFormData(data);
                 console.log(data);
                 console.log(photoId)
             })
     }, []);
 
-    useEffect(() => {
-        setTitle(photo.title);
-        setDescription(photo.description);
-        setPrice(photo.price);
-        setImageUrl(photo.imageUrl);
-    }, [photo])
-
-    
-
-    const [formData, setFormData] = useState({
-        title,
-        description,
-        price,
-        imageUrl,
-        _ownerId: user._id
-    });
-
+   
     const onChangeHandler = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        console.log(formData);
     }
 
     const navigate = useNavigate();
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-
     }
 
     return (
@@ -58,13 +43,13 @@ export const EditPhoto = () => {
             <h2>Edit your photo</h2>
             <form className={styles["register"]} onSubmit={onSubmitHandler}>
 
-                <input name="title" type="text" title="title" placeholder="title" value={title} required onChange={onChangeHandler} />
+                <input name="title" type="text" title="title" placeholder="title" defaultValue={formData.title} onChange={onChangeHandler} />
 
                 {/* <p className={styles["error"]} >
                     Title is required!
                 </p> */}
 
-                <input name="description" type="text" placeholder="description" value={description} required onChange={onChangeHandler} />
+                <input name="description" type="text" placeholder="description" defaultValue={formData.description} onChange={onChangeHandler} />
 
                 {/* <p className={styles["error"]} >
                     Description is required!
@@ -74,13 +59,13 @@ export const EditPhoto = () => {
                     Description must be at least 10 symbols!
                 </p > */}
 
-                <input name="price" type="text" placeholder="price" value={price} required onChange={onChangeHandler} />
+                <input name="price" type="text" placeholder="price" defaultValue={formData.price} onChange={onChangeHandler} />
 
                 {/* <p className={styles["error"]} >
                     Price must be at least 5 GBP!
                 </p > */}
 
-                <input name="imageUrl" type="text" title="img" placeholder="imageUrl" value={imageUrl} required onChange={onChangeHandler} />
+                <input name="imageUrl" type="text" title="img" placeholder="imageUrl" defaultValue={formData.imageUrl} onChange={onChangeHandler} />
 
                 {/* <p className={styles["error"]} >
                     Image URL is required!
