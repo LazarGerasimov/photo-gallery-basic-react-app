@@ -9,7 +9,7 @@ export const PhotoDetails = () => {
 
     const [photo, setPhoto] = useState([]);
     const [likes, setLikes] = useState([]);
-    
+    const [isLiked, setIsLiked] = useState(false);
 
     const { photoId } = useParams();
 
@@ -22,8 +22,9 @@ export const PhotoDetails = () => {
             .then(data => {
                 setPhoto(data);
                 setLikes(data.likes);
+                console.log(data.likes);
             })
-    }, [likes]);
+    }, [isLiked]);
 
     const onPhotoDeleteHandler = (e) => {
         e.preventDefault();
@@ -39,19 +40,24 @@ export const PhotoDetails = () => {
     const testClick = () => {
         console.log(photo);
         console.log(photo.likes.length);
+        // setIsLiked(state => !state);
+        console.log(isLiked);
     }
 
     const onLikeClickHandler = () => {
+        setIsLiked(state => !state);
         try {
             apiService.likePhoto(photo._id, user.accessToken)
                 .then(data => {
                     setLikes(data);
-                    console.log(data);
+                    // setIsLiked(true);
                 })
         } catch (error) {
             console.log(error.message);
         }
     }
+
+    
 
     const onEditClick = () => {
         navigate(`/photos/${photoId}/edit`);
