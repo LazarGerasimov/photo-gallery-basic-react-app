@@ -70,7 +70,7 @@ export const AddPhoto = () => {
                 return setErrors({ ...errors, ["serverErrors"]: photoData.message.error });
             }
 
-            navigate('/photos');
+            navigate('/photos/user/profile');
            
 
         } catch (error) {
