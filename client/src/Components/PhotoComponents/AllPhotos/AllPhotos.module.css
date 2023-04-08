@@ -1,11 +1,11 @@
 .all-photos-h1 {
     text-align: center;
-    margin-top: 60px;
-    animation: AllPhotos_slideUp__gjiH3 1.5s;
+    margin-top: 0px;
     font-weight: bold;
     font-size: 40px;
-    border: 4px solid black;
+    border: 1px solid black;
     background-color: lightsteelblue;
+    animation: slideUp 1.5s;
 }
 
 .all-photos-wrapper {
