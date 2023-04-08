@@ -91,7 +91,7 @@
     font-size: 20px;
     font-weight: bold;
     color: white;
-    animation: slideUp 1.5s;
+    /* animation: slideUp 1.5s; */
     cursor: pointer;
 }
 
@@ -118,6 +118,15 @@
 }
 
 .like-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 1px 1px 1px blue;
+}
+
+.unlike-btn {
+    background-color: #00256C;
+}
+
+.unlike-btn:hover {
     transform: scale(1.1);
     box-shadow: 1px 1px 1px blue;
 }

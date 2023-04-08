@@ -9,7 +9,7 @@ export const PhotoDetails = () => {
 
     const [photo, setPhoto] = useState([]);
     const [likes, setLikes] = useState([]);
-    const [isLiked, setIsLiked] = useState(false);
+    const [isLiked, setIsLiked] = useState(undefined);
 
     const { photoId } = useParams();
 
@@ -22,7 +22,8 @@ export const PhotoDetails = () => {
             .then(data => {
                 setPhoto(data);
                 setLikes(data.likes);
-                console.log(data.likes);
+                setIsLiked(data.likes.includes(user._id));
+                // console.log(data.likes);
             })
     }, [isLiked]);
 
@@ -31,15 +32,15 @@ export const PhotoDetails = () => {
 
         try {
             apiService.deletePhotoById(photoId, user.accessToken)
-            navigate('/');
+            navigate('/photos');
         } catch (error) {
             console.log(error.message);
         }
     }
 
     const testClick = () => {
-        console.log(photo);
-        console.log(photo.likes.length);
+        // console.log(photo);
+        console.log(photo.likes);
         // setIsLiked(state => !state);
         console.log(isLiked);
     }
@@ -57,7 +58,20 @@ export const PhotoDetails = () => {
         }
     }
 
-    
+    const onUnlikeClickHandler = () => {
+        setIsLiked(state => !state);
+        try {
+            apiService.unlikePhoto(photo._id, user.accessToken)
+                .then(data => {
+                    setLikes(data);
+                    // setIsLiked(true);
+                })
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+
 
     const onEditClick = () => {
         navigate(`/photos/${photoId}/edit`);
@@ -90,7 +104,12 @@ export const PhotoDetails = () => {
                         :
 
                         <div className={styles["photo-details-button-wrapper"]}>
-                            <button type="submit" className={styles["like-btn"]} onClick={onLikeClickHandler}><i className="fa-solid fa-thumbs-up"></i> Like </button >
+                            {!isLiked &&
+                                <button type="submit" className={styles["like-btn"]} onClick={onLikeClickHandler}><i className="fa-solid fa-thumbs-up"></i> Like </button >
+                            }
+                            {isLiked &&
+                                <button type="submit" className={styles["unlike-btn"]} onClick={onUnlikeClickHandler}><i className="fa-regular fa-thumbs-down"></i> Unlike </button >
+                            }
                             <span className={styles["heart-span"]}><img className={styles["heart-img"]} src={'/images/red-heart.png'} alt="" />{likes.length}</span>
                         </div>
 

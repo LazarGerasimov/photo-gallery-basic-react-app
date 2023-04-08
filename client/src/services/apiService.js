@@ -110,6 +110,24 @@ export const getPhotosByOwner = async (token) => {
 export const likePhoto = async (photoId, token) => {
     try {
         const response = await fetch(`${baseUrl}/photos/${photoId}/like`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': token
+            }
+        });
+        const result = await response.json();
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.log(error.message);
+        return error;
+    }
+};
+
+export const unlikePhoto = async (photoId, token) => {
+    try {
+        const response = await fetch(`${baseUrl}/photos/${photoId}/unlike`, {
             headers: {
                 'Content-Type': 'application/json',
                 'X-Authorization': token
