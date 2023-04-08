@@ -102,6 +102,7 @@
     margin-left: 45%;
     padding: 5px 15px;
     margin-top: 2%;
+    animation: slideUp 1.5s;
 }
 
 @keyframes slideUp {
