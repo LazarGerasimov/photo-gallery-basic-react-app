@@ -18,6 +18,7 @@ import { RecentPhotos } from './Components/PhotoComponents/RecentPhotos/RecentPh
 import { Profile } from './Components/AuthComponents/Profile/Profile';
 import { EditPhoto } from './Components/PhotoComponents/EditPhoto/EditPhoto';
 import { MostExpensive } from './Components/PhotoComponents/MostExpensive/MostExpensive';
+import { PageNotFound } from './Components/CoreComponents/PageNotFound/PageNotFound';
 
 import './App.css';
 
@@ -40,8 +41,9 @@ function App() {
         <AuthContext.Provider value={{ user, setUserData, onLogoutHandler }}>
             <Header />
             <Routes>
-                
+
                 <Route path='/' element={<HomePage />} />
+                <Route path='*' element={<PageNotFound />} />
 
                 <Route element={<UserGuard />}>
                     <Route path='/auth/login' element={<Login />} />
@@ -55,7 +57,7 @@ function App() {
                     <Route path='/photos/create' element={<AddPhoto />} />
                     <Route path='/photos/:photoId/edit' element={<EditPhoto />} />
                     <Route path='/photos/:photoId' element={<PhotoDetails />} />
-                    <Route path='/photos/most-expensive' element={<MostExpensive />}/>
+                    <Route path='/photos/most-expensive' element={<MostExpensive />} />
                 </Route>
 
             </Routes>
