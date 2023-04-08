@@ -1,0 +1,24 @@
+.profile-wrapper {
+    text-align: center;
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.name-image-wrapper {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+}
+
+.name-image-wrapper img {
+    width: 300px;
+    border-radius: 20px;
+    border: 4px solid gray;
+    box-shadow: 1px 1px 1px gray;
+}
+
+

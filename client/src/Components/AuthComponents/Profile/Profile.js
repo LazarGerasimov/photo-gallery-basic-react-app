@@ -11,6 +11,8 @@ export const Profile = () => {
 
     const { user } = useContext(AuthContext);
 
+    const username = user.email.split("@")[0];
+
     useEffect(() => {
         let ownerArray = [];
         apiService.getAllPhotos()
@@ -22,19 +24,39 @@ export const Profile = () => {
                     // console.log(ownerArray);
                 })
                 setProfilePhotos(ownerArray);
-            })     
+            })
     }, [])
 
     const testClick = () => {
         console.log(profilePhotos);
         console.log(user);
-        
+        console.log(username)
+
     }
 
     return (
         <>
-            <h1>Profile</h1>
-            <button onClick={testClick}>Test</button>
+            <div className={styles["profile-wrapper"]}>
+                <div className={styles["name-image-wrapper"]}>
+                    <h1>Hello, {username}</h1>
+                    <img src='/images/camera-gender-fluid.jpg' />
+                </div>
+                <div className={styles["owner-photos-wrapper"]}>
+                    <h1>Your collection:</h1>
+                    {profilePhotos.length > 0
+                        ? 
+                        <div className={styles["owner-photos-container"]}>
+
+                        </div>
+                        : 
+                        <div className={styles["no-owner-photos-container"]}>
+                            <p>You have not uploaded any photos yet.</p>
+                            <p>If you are looking for inspiration, check the photos uploaded by the others <Link>here</Link></p>
+                        </div>
+                    }
+
+                </div>
+            </div>
         </>
     )
 }
