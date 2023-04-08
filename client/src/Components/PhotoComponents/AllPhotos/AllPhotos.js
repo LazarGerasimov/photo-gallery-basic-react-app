@@ -8,11 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 export const AllPhotos = () => {
 
     const [photos, setPhotos] = useState([]);
+    const [query, setQeury] = useState("");
     const navigate = useNavigate();
-
-    const testClick = () => {
-        console.log(photos)
-    }
 
     useEffect(() => {
         apiService.getAllPhotos()
@@ -22,12 +19,23 @@ export const AllPhotos = () => {
             })
     }, []); // will be executed once upon component mounting
 
+    const onChangeHandler = (e) => {
+        setQeury(e.target.value);
+    }
+
+    const searchedPhotos = photos.filter(searched => {
+        if (searched.title.toLowerCase().includes(query.toLowerCase()) || searched.description.toLowerCase().includes(query.toLowerCase())) {
+            return searched;
+        }
+    })
+
     return (
         <>
             <h1 className={styles["all-photos-h1"]}>All Photos</h1>
+            <input className={styles["search-input"]} name="search" type="text" placeholder="Search for photos.." onChange={onChangeHandler}/>
             <div className={styles["all-photos-wrapper"]}>
                 <div className={styles["our_photos"]}>
-                    {photos.map((photo) => {
+                    {searchedPhotos.map((photo) => {
 
                         const navigateToDetails = () => {
                             navigate(`/photos/${photo._id}`);
