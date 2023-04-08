@@ -13,7 +13,8 @@ Both registered and not registered users have access to the Home Page. Both part
 
 Registered users have access to the full content of the website. Upon successful registration, users are redirected to their profile page where quick links are provided for photo upload and browse all. Their personal uploads, content and profile information is stored in the profile tab. Clicking on the photo redirects logged in users to a photo-details page from where they can edit/delete the photo if they are the owners.
 
-![image](https://user-images.githubusercontent.com/99253584/230732181-df4c2e58-518c-4944-9dcd-9ce156f1eb87.png)
+![image](https://user-images.githubusercontent.com/99253584/230738742-5b96c548-8702-465f-89cd-3399f78097f9.png)
+
 
 
 There is an implemented like functionality. Only registered users can like other users' photos. Guests can only see the number of likes for each photo. Owners cannot like their own photos. On their profile tab, registered users can see the likes they received for their content. 
