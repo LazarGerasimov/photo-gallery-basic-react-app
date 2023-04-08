@@ -107,13 +107,14 @@ const likePhoto = async (photoId, userId) => {
     return photo.likes;
 }
 
-const unlikePhoto = async (photoId, userId) => {
-    const photo = await Photo.findById(photoId);
-    photo.likes.filter(p => p._id !== userId);
-    // return photo.save();
-    photo.save();
-    return photo.likes;
-}
+// const unlikePhoto = async (photoId, userId) => {
+//     const photo = await Photo.findById(photoId);
+//     let newArr = photo.likes.map(x => x !== userId);
+//     photo.likes = newArr;
+//     // return photo.save();
+//     photo.save();
+//     return photo.likes;
+// }
 
 
 
@@ -131,5 +132,4 @@ module.exports = {
     updateUserPhotos,
     removeFromCurrentPhotos,
     likePhoto,
-    unlikePhoto
 }

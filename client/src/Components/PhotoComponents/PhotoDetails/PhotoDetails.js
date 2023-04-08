@@ -58,20 +58,18 @@ export const PhotoDetails = () => {
         }
     }
 
-    const onUnlikeClickHandler = () => {
-        setIsLiked(state => !state);
-        try {
-            apiService.unlikePhoto(photo._id, user.accessToken)
-                .then(data => {
-                    setLikes(data);
-                    // setIsLiked(true);
-                })
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
-
-
+    // const onUnlikeClickHandler = () => {
+    //     setIsLiked(state => !state);
+    //     try {
+    //         apiService.unlikePhoto(photo._id, user.accessToken)
+    //             .then(data => {
+    //                 setLikes(data);
+    //                 // setIsLiked(true);
+    //             })
+    //     } catch (error) {
+    //         console.log(error.message);
+    //     }
+    // }
 
     const onEditClick = () => {
         navigate(`/photos/${photoId}/edit`);
@@ -107,9 +105,9 @@ export const PhotoDetails = () => {
                             {!isLiked &&
                                 <button type="submit" className={styles["like-btn"]} onClick={onLikeClickHandler}><i className="fa-solid fa-thumbs-up"></i> Like </button >
                             }
-                            {isLiked &&
+                            {/* {isLiked &&
                                 <button type="submit" className={styles["unlike-btn"]} onClick={onUnlikeClickHandler}><i className="fa-regular fa-thumbs-down"></i> Unlike </button >
-                            }
+                            } */}
                             <span className={styles["heart-span"]}><img className={styles["heart-img"]} src={'/images/red-heart.png'} alt="" />{likes.length}</span>
                         </div>
 
@@ -124,3 +122,17 @@ export const PhotoDetails = () => {
         </div >
     )
 }
+
+
+// // **like-stable** const onLikeClickHandler = () => {
+//     setIsLiked(state => !state);
+//     try {
+//         apiService.likePhoto(photo._id, user.accessToken)
+//             .then(data => {
+//                 setLikes(data);
+//                 // setIsLiked(true);
+//             })
+//     } catch (error) {
+//         console.log(error.message);
+//     }
+// // } 

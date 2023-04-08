@@ -117,18 +117,18 @@ photoController.get('/:id/like', async (req, res) => {
     }
 });
 
-photoController.get('/:id/unlike', async (req, res) => {
-    try {
-        const photo = await getPhotoById(req.params.id);
-        if (photo._ownerId._id != req?.user?._id && photo.likes.map(p => p.includes(req?.user?._id) == true)) {
-            const likesArr = await unlikePhoto(req.params.id, req?.user?._id);
-            return likesArr;
-        }
-        // return res.status(200).json(photo);
-    } catch (error) {
-        return error;
-    }
-});
+// photoController.get('/:id/unlike', async (req, res) => {
+//     try {
+//         const photo = await getPhotoById(req.params.id);
+//         if (photo._ownerId._id != req?.user?._id && photo.likes.map(p => p.includes(req?.user?._id) == true)) {
+//             const likesArr = await unlikePhoto(req.params.id, req?.user?._id);
+//             return likesArr;
+//         }
+//         // return res.status(200).json(photo);
+//     } catch (error) {
+//         return error;
+//     }
+// });
 
 
 photoController.get('/profile', async (req, res) => {
