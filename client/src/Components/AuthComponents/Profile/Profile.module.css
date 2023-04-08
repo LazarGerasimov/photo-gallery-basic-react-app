@@ -24,11 +24,10 @@
 
 .name-image-wrapper {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     text-align: center;
     flex-direction: column;
-    margin-right: 158px;
     margin-top: 2%;
     align-content: flex-end;
     animation: slideUp 1.5s;
