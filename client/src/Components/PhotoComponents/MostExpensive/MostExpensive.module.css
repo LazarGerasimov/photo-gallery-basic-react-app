@@ -1,5 +1,5 @@
 
-@media screen and (width < 635) {
+@media screen and (width < 635px) {
     .most-expensive-photos-wrapper {
         max-width: 90vw;
         margin-top: unset;

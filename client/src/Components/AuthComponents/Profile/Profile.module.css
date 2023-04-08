@@ -1,3 +1,17 @@
+
+
+@media screen and (max-width < 607px) {
+    .name-image-wrapper {
+        display: none;
+    }
+
+    .name-image-wrapper img {
+        width: 200px;
+        display: none;
+    }
+}
+
+
 .profile-wrapper {
     text-align: center;
     margin-top: 3%;
@@ -18,7 +32,6 @@
     margin-top: 2%;
     align-content: flex-end;
     animation: slideUp 1.5s;
-
 }
 
 .owner-photos-container {
