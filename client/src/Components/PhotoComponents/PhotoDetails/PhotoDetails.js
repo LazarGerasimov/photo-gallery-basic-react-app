@@ -124,16 +124,3 @@ export const PhotoDetails = () => {
     )
 }
 
-
-// // **like-stable** const onLikeClickHandler = () => {
-//     setIsLiked(state => !state);
-//     try {
-//         apiService.likePhoto(photo._id, user.accessToken)
-//             .then(data => {
-//                 setLikes(data);
-//                 // setIsLiked(true);
-//             })
-//     } catch (error) {
-//         console.log(error.message);
-//     }
-// // } 
