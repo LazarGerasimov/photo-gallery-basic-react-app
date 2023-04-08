@@ -1,6 +1,6 @@
 const User = require('../models/User');
 
-const { addPhoto, getAllPhotos, getMostExpensivePhotos, getRecentPhotos , getPhotoById, updatePhoto, deletePhoto, likePhoto, unlikePhoto, updateUserPhotos, removeFromCurrentPhotos, getPhotosByOwner} = require('../services/photoService');
+const { addPhoto, getAllPhotos, getMostExpensivePhotos, getRecentPhotos, getPhotoById, updatePhoto, deletePhoto, likePhoto, unlikePhoto, updateUserPhotos, removeFromCurrentPhotos, getPhotosByOwner } = require('../services/photoService');
 
 
 const photoController = require('express').Router();
@@ -31,7 +31,7 @@ photoController.post('/create', async (req, res) => {
         return photo;
     } catch (error) {
         console.log(error)
-        res.status(400).json({error:error.message})
+        res.status(400).json({ error: error.message })
         return error;
     }
 })
@@ -59,14 +59,14 @@ photoController.get('/:id', async (req, res) => {
     try {
         let id = req.params.id;
         const photo = await getPhotoById(id);
-        if(photo){
+        if (photo) {
             res.status(200).json(photo)
-        }else {
+        } else {
             throw new Error('Invalid photo ID!')
         }
     } catch (error) {
         console.log(error)
-        res.status(400).json({error:error.message})
+        res.status(400).json({ error: error.message })
     }
 });
 
@@ -74,7 +74,7 @@ photoController.get('/:id', async (req, res) => {
 photoController.put('/:id', async (req, res) => {
     try {
         const photo = await getPhotoById(req.params.id);
-       
+
         if (req.user._id != photo._ownerId) {
             return res.status(403).json({ message: 'You cannot edit this photo' })
         }
@@ -97,7 +97,7 @@ photoController.delete('/:id', async (req, res) => {
         }
         await removeFromCurrentPhotos(req.user._id, req.params.id);
         await deletePhoto(req.params.id);
-        res.status(200).send({message: 'Item was deleted successfully'});
+        res.status(200).send({ message: 'Item was deleted successfully' });
     } catch (err) {
         res.status(400).json({ err: err.message })
     }
@@ -107,11 +107,16 @@ photoController.delete('/:id', async (req, res) => {
 photoController.get('/:id/like', async (req, res) => {
     try {
         const photo = await getPhotoById(req.params.id);
-        return res.status(200).json(photo);
+        if (photo._ownerId._id != req?.user?._id && photo.likes.map(p => p.includes(req?.user?._id) == false)) {
+            const likesArr = await likePhoto(req.params.id, req?.user?._id)
+            return likesArr;
+        }
+        // return res.status(200).json(photo);
     } catch (error) {
-        console.log(error.message);
+        return error;
     }
 });
+
 
 photoController.get('/profile', async (req, res) => {
     const _id = req?.user?._id;
@@ -121,7 +126,7 @@ photoController.get('/profile', async (req, res) => {
         res.status(200).json(photos);
         res.end();
     } catch (error) {
-        console.log(_id);
+        // console.log(_id);
         return (error.message);
     }
 });

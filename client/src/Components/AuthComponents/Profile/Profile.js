@@ -21,6 +21,7 @@ export const Profile = () => {
 
     const testClick = () => {
         console.log(profilePhotos);
+        console.log(user);
     }
 
     return (

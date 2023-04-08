@@ -28,6 +28,7 @@ async function updatePhoto(id, photo) {
     // console.log(existing.title)
     existing.description = photo.description;
     existing.price = photo.price;
+    existing.imageUrl = photo.imageUrl;
 
     return existing.save();
 }
@@ -101,13 +102,17 @@ const getPhotosByOwner = async (_id) => {
 const likePhoto = async (photoId, userId) => {
     const photo = await Photo.findById(photoId);
     photo.likes.push(userId);
-    return photo.save();
+    // return photo.save();
+    photo.save();
+    return photo.likes;
 }
 
 const unlikePhoto = async (photoId, userId) => {
     const photo = await Photo.findById(photoId);
     photo.likes.filter(p => p !== userId);
-    return photo.save();
+    // return photo.save();
+    photo.save();
+    return photo.likes;
 }
 
 

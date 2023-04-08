@@ -9,6 +9,7 @@ export const PhotoDetails = () => {
 
     const [photo, setPhoto] = useState([]);
     const [likes, setLikes] = useState([]);
+    
 
     const { photoId } = useParams();
 
@@ -22,7 +23,7 @@ export const PhotoDetails = () => {
                 setPhoto(data);
                 setLikes(data.likes);
             })
-    }, []);
+    }, [likes]);
 
     const onPhotoDeleteHandler = (e) => {
         e.preventDefault();
@@ -42,7 +43,11 @@ export const PhotoDetails = () => {
 
     const onLikeClickHandler = () => {
         try {
-            apiService.likePhoto(photo._id, user.accessToken);
+            apiService.likePhoto(photo._id, user.accessToken)
+                .then(data => {
+                    setLikes(data);
+                    console.log(data);
+                })
         } catch (error) {
             console.log(error.message);
         }

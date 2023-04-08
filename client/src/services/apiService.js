@@ -97,7 +97,7 @@ export const getPhotosByOwner = async (token) => {
     try {
         const response = await fetch(`${baseUrl}/photos/profile`, {
             headers: {
-                'X-Authorization': token
+                'x-authorization': token
             }
         });
         const result = response.json();
@@ -116,6 +116,7 @@ export const likePhoto = async (photoId, token) => {
             }
         });
         const result = await response.json();
+        console.log(result);
         return result;
     } catch (error) {
         console.log(error.message);
