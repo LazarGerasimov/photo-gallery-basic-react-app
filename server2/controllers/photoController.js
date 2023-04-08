@@ -117,6 +117,18 @@ photoController.get('/:id/like', async (req, res) => {
     }
 });
 
+
+// photoController.get('/user/profile', async (req, res) => {
+//     try {
+//         const userId = req?.user?._id;
+//         const ownerPhotos = await getPhotosByOwner(userId);
+//         res.status(200).json(ownerPhotos);
+//     } catch (error) {
+//         console.log(error.message);
+//         return error;
+//     }
+// })
+
 // photoController.get('/:id/unlike', async (req, res) => {
 //     try {
 //         const photo = await getPhotoById(req.params.id);
@@ -129,20 +141,6 @@ photoController.get('/:id/like', async (req, res) => {
 //         return error;
 //     }
 // });
-
-
-photoController.get('/profile', async (req, res) => {
-    const _id = req?.user?._id;
-    try {
-        const photos = await getPhotosByOwner(_id);
-        // const photos = await getAllPhotos();
-        res.status(200).json(photos);
-        res.end();
-    } catch (error) {
-        // console.log(_id);
-        return (error.message);
-    }
-});
 
 // photoController.get('/profile', async (req, res) => {
 //     const photos = await getAllPhotos()

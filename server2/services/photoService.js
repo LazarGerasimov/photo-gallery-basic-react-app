@@ -49,7 +49,7 @@ const updateUserPhotos = async (_id, photoId) => {
         const user = await User.findById(_id);
         let photoArray = user.currentPhotos;
         photoArray.push(photoId);
-        await User.findByIdAndUpdate(_id, {currentPhotos: photoArray})
+        await User.findByIdAndUpdate(_id, { currentPhotos: photoArray })
     } catch (error) {
         throw new Error(error);
     }
@@ -60,7 +60,7 @@ const removeFromCurrentPhotos = async (_id, photoId) => {
         const user = await User.findById(_id);
         let photoArray = user.currentPhotos;
         let newArr = photoArray.filter(x => x._id !== photoId);
-        await User.findByIdAndUpdate(_id, {currentPhotos: newArr});
+        await User.findByIdAndUpdate(_id, { currentPhotos: newArr });
     } catch (error) {
         throw new Error(error);
     }
@@ -80,13 +80,31 @@ const getRecentPhotos = async () => {
     return photos
 }
 
-const getPhotosByOwner = async (_id) => {
-    // const ownedPhotos = await Photo.find({});
-    // return ownedPhotos;
-    const allPhotos = await Photo.find({}).sort({ created_at: -1 });
-    let ownedPhotosArray = allPhotos.filter(p => p._ownerId === _id);
-    return ownedPhotosArray;
-}
+// const getPhotosByOwner = async (userId) => {
+//     const allPhotos = await Photo.find({}).sort({ created_at: -1 });
+//     const ownerArray = [];
+//     allPhotos.map(p => {
+//         if (p._ownerId === userId) {
+//             ownerArray.push(p);
+//         }
+//     });
+//     return ownerArray; 
+// }
+
+
+// // half working
+// const getPhotosByOwner = async (userId) => {
+//     const allPhotos = await Photo.find({}).sort({ created_at: -1 });
+//     let ownerArray = [];
+//     allPhotos.map(p => {
+//         if(p._ownerId === userId) {
+//             ownerArray.push(p);
+//         }
+//     });
+//     return ownerArray;
+// }
+
+
 
 // const updateUserPhotos = async (_id, photoId) => {
 //     try {

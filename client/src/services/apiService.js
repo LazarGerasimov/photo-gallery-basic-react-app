@@ -93,20 +93,6 @@ export const editPhoto = async (photo, token) => {
     }
 }
 
-export const getPhotosByOwner = async (token) => {
-    try {
-        const response = await fetch(`${baseUrl}/photos/profile`, {
-            headers: {
-                'x-authorization': token
-            }
-        });
-        const result = response.json();
-        return result
-    } catch (error) {
-        return error.message;
-    }
-}
-
 export const likePhoto = async (photoId, token) => {
     try {
         const response = await fetch(`${baseUrl}/photos/${photoId}/like`, {
@@ -124,6 +110,24 @@ export const likePhoto = async (photoId, token) => {
         return error;
     }
 };
+
+// export const getPhotosByOwner = async (token) => {
+//     try {
+//         const response = await fetch(`${baseUrl}/photos/user/profile`, {
+//             method: 'GET',
+//             mode: 'no-cors',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'X-Authorization': token
+//             }
+//         });
+//         const result = await response.json();
+//         return result;
+//     } catch (error) {
+//         console.log(error.message);
+//         return error;
+//     }
+// }
 
 // export const unlikePhoto = async (photoId, token) => {
 //     try {

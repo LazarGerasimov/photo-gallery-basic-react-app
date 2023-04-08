@@ -60,7 +60,7 @@ export const Header = () => {
                                 <Link to="/photos/create">Upload Photo</Link>
                             </li>
                             <li>
-                                <Link to="/photos/profile">Profile</Link>
+                                <Link to="/photos/user/profile">Profile</Link>
                             </li>
                             <li>
                                 <Link to="/" onClick={onLogoutHandler}>Logout</Link>

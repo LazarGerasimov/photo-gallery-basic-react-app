@@ -12,16 +12,23 @@ export const Profile = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        apiService.getPhotosByOwner(user.accessToken)
+        let ownerArray = [];
+        apiService.getAllPhotos()
             .then(data => {
-                setProfilePhotos(data);
-                console.log(data);
-            })
-    }, []);
+                data.map(p => {
+                    if (p._ownerId === user._id) {
+                        ownerArray.push(p);
+                    }
+                    // console.log(ownerArray);
+                })
+                setProfilePhotos(ownerArray);
+            })     
+    }, [])
 
     const testClick = () => {
         console.log(profilePhotos);
         console.log(user);
+        
     }
 
     return (

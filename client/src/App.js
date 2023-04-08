@@ -50,7 +50,7 @@ function App() {
                 </Route>
 
                 <Route element={<GuestGuard />}>
-                    <Route path='/photos/profile' element={<Profile />} />
+                    <Route path='/photos/user/profile' element={<Profile />} />
                     <Route path='/photos' element={<AllPhotos />} />
                     <Route path='/photos/create' element={<AddPhoto />} />
                     <Route path='/photos/:photoId/edit' element={<EditPhoto />} />
