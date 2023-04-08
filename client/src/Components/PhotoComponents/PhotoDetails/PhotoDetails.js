@@ -32,7 +32,7 @@ export const PhotoDetails = () => {
 
         try {
             await apiService.deletePhotoById(photoId, user.accessToken);
-            navigate('/photos');
+            navigate('/photos/user/profile');
         } catch (error) {
             console.log(error.message);
         }

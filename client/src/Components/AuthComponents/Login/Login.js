@@ -56,7 +56,7 @@ export const Login = () => {
                 return setErrors({ ...errors, serverErrors: userData.message });
             }
             setUserData(userData);
-            navigate('/');
+            navigate('/photos/user/profile');
         } catch (error) {
             console.log(error.message);
         }
