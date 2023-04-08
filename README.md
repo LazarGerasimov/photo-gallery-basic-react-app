@@ -20,6 +20,8 @@ Both registered and not registered users have access to the Home Page. Both part
 
 Registered users have access to the full content of the website. Upon successful registration, users are redirected to their profile page where quick links are provided for photo upload and browse all. Their personal uploads, content and profile information is stored in the profile tab. Clicking on the photo redirects logged in users to a photo-details page from where they can edit/delete the photo if they are the owners.
 
+There is a search bar added in the All Photos section for better UX and help users navigate easily through the content.
+
 
 
 ![image](https://user-images.githubusercontent.com/99253584/230738742-5b96c548-8702-465f-89cd-3399f78097f9.png)
