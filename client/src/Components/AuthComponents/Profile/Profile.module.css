@@ -5,6 +5,7 @@
     flex-direction: column;
     gap: 40px;
     margin-top: 0px;
+    animation: slideUp 1.5s;
 }
 
 .name-image-wrapper {
@@ -16,11 +17,13 @@
     margin-right: 158px;
     margin-top: 2%;
     align-content: flex-end;
+    animation: slideUp 1.5s;
 
 }
 
 .owner-photos-container {
     margin-top: 4%;
+    animation: slideUp 1.5s;
 }
 
 .owner-photos-wrapper h1 {
@@ -78,4 +81,14 @@
     text-decoration: none;
     font-size: 24px;
     color: rgb(171, 113, 5)
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(300px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
