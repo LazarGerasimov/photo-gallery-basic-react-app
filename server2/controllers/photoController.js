@@ -1,6 +1,6 @@
 const User = require('../models/User');
 
-const { addPhoto, getAllPhotos, getMostExpensivePhotos, getRecentPhotos, getPhotoById, updatePhoto, deletePhoto, likePhoto, unlikePhoto, updateUserPhotos, removeFromCurrentPhotos, getPhotosByOwner } = require('../services/photoService');
+const { addPhoto, getAllPhotos, getMostExpensivePhotos, getRecentPhotos, getPhotoById, updatePhoto, deletePhoto, likePhoto, updateUserPhotos, removeFromCurrentPhotos, getPhotosByOwner } = require('../services/photoService');
 
 
 const photoController = require('express').Router();

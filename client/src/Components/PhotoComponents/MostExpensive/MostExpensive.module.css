@@ -1,0 +1,115 @@
+.most-expensive-photos-h1 {
+    text-align: center;
+    margin-top: 60px;
+    animation: slideUp 1.5s;
+}
+
+.most-expensive-photos-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slideUp 1.5s;
+    margin-top: 140px;
+}
+
+.most_expensive_photos {
+    text-align: center;
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 50px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 80px;
+    margin-right: 80px;
+    width: 80%;
+    flex-wrap: wrap;
+    gap: 190px;
+
+}
+
+.most_expensive_photos .photo_box {
+    text-align: center;
+}
+
+.most_expensive_photos .photo_box figure {
+    margin: 0;
+}
+
+.most_expensive_photos figure {
+    cursor: pointer;
+    transition: transform .4s;
+}
+
+.most_expensive_photos figure:hover {
+    transform: scale(1.9);
+}
+
+.most_expensive_photos img {
+    width: 500px;
+    height: 300px;
+    image-resolution: 100px 100px;
+    border: 3px solid black;
+    border-radius: 20px;
+    box-shadow: 5px -1px 20px 6px gray;
+}
+
+.most_expensive_photos .photo_box h3 {
+    width: 500px;
+    color: white;
+    font-size: 20px;
+    line-height: 20px;
+    background-color: #252525;
+    font-weight: 100px;
+    margin: 0 auto;
+    padding: 10px 0;
+    transition: ease-in all 0.5s;
+    text-decoration: none;
+    border-radius: 20px;
+    box-shadow: 5px -1px 20px 6px gray;
+    cursor: pointer;
+}
+
+.most_expensive_photos h2 {
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.most_expensive_photos .photo_box a {
+    text-decoration: none;
+    color: white;
+}
+
+.most_expensive_photos .photo_box p {
+    width: 500px;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    line-height: 20px;
+    /* // background-color: #252525; */
+    font-weight: 300;
+    margin: 0 0;
+    padding: 0 0;
+    transition: ease-in all 0.5s;
+}
+
+.most_expensive_photos .photo_box h3:hover {
+    /* background: rgb(154, 70, 1) 25%; */
+    background-color: #00256C;
+    transition: ease-in all 0.5s;
+}
+
+/* // col-md-4 .margin_bottom1 {
+//     margin-bottom: 10px;
+// } */
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(300px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
