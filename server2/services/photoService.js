@@ -146,7 +146,6 @@ module.exports = {
     getMostExpensivePhotos,
     getRecentPhotos,
     getAllPhotos,
-    getPhotosByOwner,
     updateUserPhotos,
     removeFromCurrentPhotos,
     likePhoto,
